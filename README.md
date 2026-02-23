@@ -11,3 +11,5 @@
 ## Mini-project 2: Back-end
 
 ## Final project: joining front and back-end
+
+testing Github - Jira functionality
