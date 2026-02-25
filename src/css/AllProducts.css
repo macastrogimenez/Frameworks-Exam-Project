@@ -30,7 +30,7 @@ cursor: pointer;
 transform: scale(1.05);
 }
 
-#categories {
+#filterDropdowns {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,4 +38,3 @@ transform: scale(1.05);
     margin-bottom: 32px;
     margin-top: 25px;
 }
-
