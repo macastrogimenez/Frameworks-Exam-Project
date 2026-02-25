@@ -3,7 +3,7 @@ const productId = Number(params.get('id'));
 
 const product = products.find(tShirt => tShirt.id === productId);
 
-document.getElementsByTagName(title).description = `${product.name}`;
+document.title = `Product Detail: ${product.name}`;
 
 document.getElementById('title').innerHTML = `${product.name}`;
 
