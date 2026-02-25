@@ -33,5 +33,8 @@ document.getElementById('ProductInfo').innerHTML +=
 `;
 
 
+document.getElementById('basketButton').onclick = () => {
+    addToBasket(productId);
+}
 
 

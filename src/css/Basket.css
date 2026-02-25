@@ -1,0 +1,30 @@
+.card {
+    height: 100%;
+    overflow: visible;
+}
+
+.card-img-top {
+    width: 100%;
+    object-fit: scale-down;
+    cursor: pointer;
+}
+.card-img-top:hover {
+    transform: scale(1.05);
+}
+
+.basketTitle { 
+    text-align: center;
+    margin: 40px 0;  
+    font-size: 60px; 
+}
+
+#lowerDiv {
+    margin-bottom: 50px;
+}
+
+.btn.btn-dark {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+

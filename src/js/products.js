@@ -17,7 +17,7 @@ const products = [
     new tShirt("Flamin' Hot Red Tee", "Red", "female", "../images/tshirt2.png", "Turn up the heat with our Flamin' Hot Red Tee! This vibrant red shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a bold pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 26.99, 1),
     new tShirt("Ocean Blue Tee", "Blue", "female", "../images/tshirt3.png", "Dive into style with our Ocean Blue Tee! This vibrant blue shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a refreshing pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 22.99, 2),
     new tShirt("Striped White Sailor Tee", "White", "male", "../images/tshirt4.png", "Sail into style with our Striped White Sailor Tee! This classic striped shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a nautical touch to your wardrobe, it's a must-have for anyone who loves timeless fashion with a modern twist.", 28.99, 3),
-    new tShirt("Tinky Winky Purple Tee", "Purple", "male", "../images/tshirt5.png", "Embrace your inner Tinky Winky with our Tinky Winky Purple Tee! This vibrant purple shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a playful pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 24.99, 18),
+    new tShirt("Tinky Winky Purple Tee", "Purple", "male", "../images/tshirt5.png", "Embrace your inner Tinky Winky with our Tinky Winky Purple Tee! This vibrant purple shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a playful pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 24.99, 4),
     new tShirt("Sunny Yellow Tee", "Yellow", "female", "../images/tshirt6.png", "Brighten up your day with our Sunny Yellow Tee! This vibrant yellow shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cheerful pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 22.99, 5),
     new tShirt("Capri-Sun Orange Tee", "Orange", "male", "../images/tshirt7.png", "Dive into summer vibes with our Capri-Sun Orange Tee! This vibrant orange shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a sunny pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 26.99, 6),
     new tShirt("Trendy Teal Tee", "Blue", "male", "../images/tshirt8.png", "Make a splash with our Trendy Teal Tee! This vibrant teal shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cool pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 29.99, 7),
@@ -29,6 +29,50 @@ const products = [
     new tShirt("Turquoise Tee", "Blue", "female", "../images/tshirt14.png", "Make a splash with our Turquoise Tee! This vibrant turquoise shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cool pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 29.99, 13),
     new tShirt("Spicy Purple Tee", "Purple", "female", "../images/tshirt15.png", "Turn up the heat with our Spicy Purple Tee! This vibrant purple shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a bold pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 28.99, 14),
 ];
+
+// the index will be the item id, and the value at each position the qty 
+    // an alternative would have been to use a HM, but it cannot be saved to localStorage, so we will use a simple JS array
+
+
+// main function     
+function addToBasket(productId){
+    let basketInStorage = localStorage.getItem('basketProducts');
+    const numberOfItems = products.length;
+
+    // Initialize basket if it doesn't exist
+    if(basketInStorage === null){
+        basketProducts = new Array(numberOfItems).fill(0);
+        saveBasketToLS(basketProducts);
+        basketInStorage = localStorage.getItem('basketProducts'); // Get it back as string
+    }
+    
+    // Convert string from localStorage to array
+    let basket = basketFromLStoArray(basketInStorage);
+    increaseProductCounter(productId, basket);
+}
+
+// helper function - saves array to localStorage as comma-separated string
+function saveBasketToLS(basketArray){
+    localStorage.setItem('basketProducts', basketArray.join(','));
+}
+
+// helper function - converts localStorage string to array of numbers
+function basketFromLStoArray(basketString){
+    return basketString.split(',').map(item => Number(item));
+}
+
+// helper function - increases quantity for a product
+function increaseProductCounter(productId, basket){
+    /*
+        if the button add to basket is clicked, 
+            then increase the value of the index productId + 1 
+                Make sure it is a Number
+    */
+    basket[productId] = basket[productId] + 1;
+    saveBasketToLS(basket);
+    
+    //console.log('Product ' + productId + ' quantity: ' + basket[productId]);
+}
 
 
 

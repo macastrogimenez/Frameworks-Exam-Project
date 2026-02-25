@@ -15,6 +15,22 @@
     <title>All Products</title>
     </head>
     <body>
+    <div id="navbar"></div>
+    <script>
+        // declares function to 
+            // fetch the HTML from file NavigationBar.html, 
+            // then this 'navbar' div and 
+            // add the NavigationBar HTML code to it
+        // finally runs the function with the id of the div and the file name
+        function includeHTML(elementId, file) {
+            fetch(file)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                });
+        }
+        includeHTML('navbar', 'NavigationBar.html');
+    </script>
     <h1 class="allproductstitle">All Products</h1>
     <h3 id="message-for-user">See something you like?</h3>
 
