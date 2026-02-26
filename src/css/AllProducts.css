@@ -1,6 +1,18 @@
+
+
 .card {
   height: 100%;
 }
+
+.allproductstitle, #message-for-user {
+  font-family: "Montserrat", sans-serif;
+}
+
+.card-body p {
+  font-weight: 600; /* price */
+}
+
+
 
 .card-img-top {
   width: 100%;
