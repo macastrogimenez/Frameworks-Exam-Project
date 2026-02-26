@@ -4,18 +4,19 @@
 }
 
 .card-img-top {
-    width: 100%;
-    object-fit: scale-down;
-    cursor: pointer;
+ width: 82%;
+  max-height: 500px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
-.card-img-top:hover {
-    transform: scale(1.05);
-}
+
 
 .productTitle { 
     text-align: center;
     margin: 40px 0;  
     font-size: 60px; 
+    
 }
 
 #sizeButton{
@@ -27,7 +28,8 @@
     text-transform: uppercase;
 }
 
-#ProductInfo{
+#ProductInfo {
+    width: 100%;
     display: flex;
     justify-content: center;  /* Centers horizontally */
     align-items: center;   
@@ -35,11 +37,6 @@
 
 #lowerDiv {
     margin-bottom: 50px;
-}
-
-.btn.btn-dark {
-    cursor: pointer;
-    transform: scale(1.05);
 }
 
 /* Basket confirmation popup */
