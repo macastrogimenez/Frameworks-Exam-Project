@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
+    <title>Registration</title>
+</head>
+
+<body class="bg-light text-dark">
+
+
+
+    <nav>
+        <!-- Navbar here -->
+    </nav>
+
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+
+        <div class="card border-0 shadow-sm p-4" style="width:100%; max-width:420px;">
+
+            <h3 class="mb-4 text-center">Create Account</h3>
+
+
+            <form onsubmit="store(event)">
+
+                <div class="form-group">
+                    <label for="fname">First name:</label>
+                    <input type="text" id="fname" name="fname" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lname">Last name:</label>
+                    <input type="text" id="lname" name="lname" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Username:</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm Password:</label>
+                    <input type="password" id="confirmPassword" class="form-control">
+                </div>
+
+                <input class="btn btn-dark w-100 mb-2" type="submit" value="Register" />
+
+                <input type="button" class="btn btn-dark w-100 mb-2" value="Cancel" onclick="history.back()" />
+
+                <p class="text-center mt-3">
+                    Already have an account?
+                    <a href="login.html">Login here</a>
+                </p>
+
+            </form>
+        </div>
+    </div>
+
+
+
+</body>
+
+
+
+<script>
+    function store(event) {
+        event.preventDefault();
+
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        localStorage.setItem("fname", document.getElementById("fname").value);
+        localStorage.setItem("lname", document.getElementById("lname").value);
+        localStorage.setItem("username", document.getElementById("username").value);
+        localStorage.setItem("password", password);
+
+        alert("Registration successful!");
+
+        window.location.href = "home.html"; //redirect to homepage after registration
+    }
+
+</script>
+
+</html>
