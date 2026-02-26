@@ -49,6 +49,7 @@ function addToBasket(productId){
     // Convert string from localStorage to array
     let basket = basketFromLStoArray(basketInStorage);
     increaseProductCounter(productId, basket);
+    popUp();
 }
 
 // helper function - saves array to localStorage as comma-separated string
@@ -72,6 +73,28 @@ function increaseProductCounter(productId, basket){
     saveBasketToLS(basket);
     
     //console.log('Product ' + productId + ' quantity: ' + basket[productId]);
+}
+
+//TODO: discuss popUp
+function popUp(){
+    const popup = document.createElement("div");
+    popup.className = "popup";
+
+    popup.innerHTML = `
+        <p>Straight into your basket!</p>
+        <div class="checkmark">✓</div>
+    `;
+
+    document.body.appendChild(popup);
+
+    // Trigger animation
+    setTimeout(() => popup.classList.add("show"), 10);
+
+    // Hide after 2 seconds
+    setTimeout(() => {
+        popup.classList.remove("show");
+        setTimeout(() => popup.remove(), 350);
+    }, 1000);
 }
 
 

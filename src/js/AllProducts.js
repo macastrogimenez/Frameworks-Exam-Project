@@ -51,7 +51,7 @@ products.forEach((product) => {
         <div class="card-body">
           <h5 class="card-title">${product.name}</h5>
           <p align=left>${product.price} EUR</p>
-          <button class="btn btn-dark" onclick="addToBasket(${product.id})" >Add to basket</button>
+          <button id="basketButton" class="btn btn-dark" onclick="addToBasket(${product.id})" >Add to basket</button>
         </div>
       </div>
     </div>
