@@ -1,4 +1,4 @@
-# WEBSHOP project
+# T-shirt web shop project
 
 ## Resources
 
