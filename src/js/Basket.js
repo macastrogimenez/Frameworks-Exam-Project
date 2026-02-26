@@ -21,19 +21,18 @@ basket.innerHTML += `
   </table>
   `;
 
-const basketBody = document.getElementById("basketBody");  
-
-const basketArray = basketFromLStoArray(localStorage.getItem('basketProducts'));
-
+const basketBody = document.getElementById("basketBody");  // body of the table 
+const basketArray = basketFromLStoArray(localStorage.getItem('basketProducts')); // retrieving basket array from memory
 let total = 0;
+// accumulator variable that is increased as the table is generated, used to provide total price of basket
 
 for(let i = 0; i < basketArray.length; i++){
-  if(basketArray[i]!==0){
-    let prod = products[i];
-    total = Number(total + (basketArray[i]*prod.price));
+  if(basketArray[i]!==0){ // if the qty in the basketArray is 0, skip the product, else retrieve it and add it to table
+    let prod = products[i]; 
+    total = Number(total + (basketArray[i]*prod.price)); // increasing the total price of the basket
     basketBody.innerHTML += `
       <tr>
-        <td>${i}<td/>
+        <td>#${i}<td/>
         <td>${prod.name}<td/>
         <td>${prod.price} EUR<td/>
         <td>${basketArray[i]}<td/>
@@ -54,9 +53,7 @@ basketBody.innerHTML += `
     `
 
 
-function placeOrder(){
-  localStorage.clear();
-}
+
 
 
 

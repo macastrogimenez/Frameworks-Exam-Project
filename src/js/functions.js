@@ -66,3 +66,10 @@ function popUp(){
 
 
 
+/*
+    Used in the Basket page, for now it only removes the array from localStorage
+*/
+
+function placeOrder(){
+    localStorage.removeItem('basketProducts');
+}
