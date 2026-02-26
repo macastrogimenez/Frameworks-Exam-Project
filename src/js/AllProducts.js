@@ -64,7 +64,7 @@ function renderProducts() {
   // card -->Bootstrap class that styles the card container/content/image.
   productsRow.innerHTML = filteredProducts
     .map(
-      (p) => `
+      (product) => `
     <div class="col-12 col-md-4 mb-3">
       <div class="card h-100">
       <a href="ProductDetail.html?id=${product.id}"> 
