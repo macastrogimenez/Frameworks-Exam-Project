@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <title>Login</title>
+</head>
+
+<body class="bg-light text-dark">
+
+    <div class="container d-flex justify-content-center" style="margin-top: 120px;">
+
+        <div class="card border-0 shadow-sm p-4" style="width:100%; max-width:420px;">
+
+            <h3 class="text-center mb-3">Login</h3>
+            <p>Please enter your username and password!</p>
+
+            <form onsubmit="login(event)">
+
+                <div class="form-group">
+                    <input type="text" id="loginUsername" class="form-control" placeholder="Username" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="btn btn-dark w-100">
+                    Login
+                </button>
+
+            </form>
+
+            <p class="text-center mt-3 small">
+                Don't have an account?
+                <a href="register.html">Register here</a>
+            </p>
+
+        </div>
+
+
+
+    </div>
+</body>
+
+<script>
+    function login(event) {
+        event.preventDefault();
+
+        let savedUsername = localStorage.getItem("username");
+        let savedPassword = localStorage.getItem("password");
+
+        let inputUsername = document.getElementById("loginUsername").value;
+        let inputPassword = document.getElementById("loginPassword").value;
+
+        if (inputUsername === savedUsername && inputPassword === savedPassword) {
+
+            alert("Login successful!");
+
+            localStorage.setItem("loggedInUser", savedUsername);
+
+            window.location.href = "home.html"; //redirect to homepage after login
+
+        } else {
+            alert("Wrong username or password!");
+        }
+    }
+</script>
+
+</html>
