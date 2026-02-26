@@ -38,6 +38,7 @@ filterDropdowns.innerHTML += `
     </div>
   `;
 
+// test comment
 const products = [
   {
     name: "Classic Black Tee",
