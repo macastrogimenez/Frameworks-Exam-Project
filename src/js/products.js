@@ -13,89 +13,20 @@ function tShirt(name, color, gender, image, description, price, id) {
 // added an id to generate the ProductDetail page off a single html document, but reading different ids
 
 const products = [
-    new tShirt("Classic Black Tee", "Black", "female", "../images/tshirt1.png", "A timeless black tee that pairs well with any outfit. Made from soft, breathable cotton for all-day comfort.", 24.99, 0),
-    new tShirt("Flamin' Hot Red Tee", "Red", "female", "../images/tshirt2.png", "Turn up the heat with our Flamin' Hot Red Tee! This vibrant red shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a bold pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 26.99, 1),
-    new tShirt("Ocean Blue Tee", "Blue", "female", "../images/tshirt3.png", "Dive into style with our Ocean Blue Tee! This vibrant blue shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a refreshing pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 22.99, 2),
-    new tShirt("Striped White Sailor Tee", "White", "male", "../images/tshirt4.png", "Sail into style with our Striped White Sailor Tee! This classic striped shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a nautical touch to your wardrobe, it's a must-have for anyone who loves timeless fashion with a modern twist.", 28.99, 3),
-    new tShirt("Tinky Winky Purple Tee", "Purple", "male", "../images/tshirt5.png", "Embrace your inner Tinky Winky with our Tinky Winky Purple Tee! This vibrant purple shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a playful pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 24.99, 4),
-    new tShirt("Sunny Yellow Tee", "Yellow", "female", "../images/tshirt6.png", "Brighten up your day with our Sunny Yellow Tee! This vibrant yellow shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cheerful pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 22.99, 5),
-    new tShirt("Capri-Sun Orange Tee", "Orange", "male", "../images/tshirt7.png", "Dive into summer vibes with our Capri-Sun Orange Tee! This vibrant orange shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a sunny pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 26.99, 6),
-    new tShirt("Trendy Teal Tee", "Blue", "male", "../images/tshirt8.png", "Make a splash with our Trendy Teal Tee! This vibrant teal shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cool pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 29.99, 7),
-    new tShirt("Earth Green Tee", "Green", "female", "../images/tshirt9.png", "Embrace nature with our Earth Green Tee! This vibrant green shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a natural pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 24.99, 8),
-    new tShirt("Army Green Tee", "Green", "male", "../images/tshirt10.png", "Go for a rugged look with our Army Green Tee! This versatile green shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a military-inspired touch to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 22.99, 9),
-    new tShirt("Washed Black Tee", "Black", "male", "../images/tshirt11.png", "Add a vintage vibe to your wardrobe with our Washed Black Tee! This faded black shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a worn-in pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 28.99, 10),
-    new tShirt("Off-White Tee", "White", "male", "../images/tshirt12.png", "Keep it classic with our Off-White Tee! This versatile off-white shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a neutral pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 20.00, 11),
-    new tShirt("Washed Red Tee", "Red", "male", "../images/tshirt13.png", "Add a vintage vibe to your wardrobe with our Washed Red Tee! This faded red shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a worn-in pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 26.99, 12),
-    new tShirt("Turquoise Tee", "Blue", "female", "../images/tshirt14.png", "Make a splash with our Turquoise Tee! This vibrant turquoise shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cool pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 29.99, 13),
-    new tShirt("Spicy Purple Tee", "Purple", "female", "../images/tshirt15.png", "Turn up the heat with our Spicy Purple Tee! This vibrant purple shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a bold pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 28.99, 14),
+    new tShirt("Classic Black Tee", "Black", "Women", "../images/tshirt1.png", "A timeless black tee that pairs well with any outfit. Made from soft, breathable cotton for all-day comfort.", 24.99, 0),
+    new tShirt("Flamin' Hot Red Tee", "Red", "Women", "../images/tshirt2.png", "Turn up the heat with our Flamin' Hot Red Tee! This vibrant red shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a bold pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 26.99, 1),
+    new tShirt("Ocean Blue Tee", "Blue", "Women", "../images/tshirt3.png", "Dive into style with our Ocean Blue Tee! This vibrant blue shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a refreshing pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 22.99, 2),
+    new tShirt("Striped White Sailor Tee", "White", "Men", "../images/tshirt4.png", "Sail into style with our Striped White Sailor Tee! This classic striped shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a nautical touch to your wardrobe, it's a must-have for anyone who loves timeless fashion with a modern twist.", 28.99, 3),
+    new tShirt("Tinky Winky Purple Tee", "Purple", "Men", "../images/tshirt5.png", "Embrace your inner Tinky Winky with our Tinky Winky Purple Tee! This vibrant purple shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a playful pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 24.99, 4),
+    new tShirt("Sunny Yellow Tee", "Yellow", "Women", "../images/tshirt6.png", "Brighten up your day with our Sunny Yellow Tee! This vibrant yellow shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cheerful pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 22.99, 5),
+    new tShirt("Capri-Sun Orange Tee", "Orange", "Men", "../images/tshirt7.png", "Dive into summer vibes with our Capri-Sun Orange Tee! This vibrant orange shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a sunny pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 26.99, 6),
+    new tShirt("Trendy Teal Tee", "Blue", "Men", "../images/tshirt8.png", "Make a splash with our Trendy Teal Tee! This vibrant teal shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cool pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 29.99, 7),
+    new tShirt("Earth Green Tee", "Green", "Women", "../images/tshirt9.png", "Embrace nature with our Earth Green Tee! This vibrant green shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a natural pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 24.99, 8),
+    new tShirt("Army Green Tee", "Green", "Men", "../images/tshirt10.png", "Go for a rugged look with our Army Green Tee! This versatile green shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a military-inspired touch to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 22.99, 9),
+    new tShirt("Washed Black Tee", "Black", "Men", "../images/tshirt11.png", "Add a vintage vibe to your wardrobe with our Washed Black Tee! This faded black shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a worn-in pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 28.99, 10),
+    new tShirt("Off-White Tee", "White", "Men", "../images/tshirt12.png", "Keep it classic with our Off-White Tee! This versatile off-white shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a neutral pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 20.00, 11),
+    new tShirt("Washed Red Tee", "Red", "Men", "../images/tshirt13.png", "Add a vintage vibe to your wardrobe with our Washed Red Tee! This faded red shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a worn-in pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 26.99, 12),
+    new tShirt("Turquoise Tee", "Blue", "Women", "../images/tshirt14.png", "Make a splash with our Turquoise Tee! This vibrant turquoise shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cool pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 29.99, 13),
+    new tShirt("Spicy Purple Tee", "Purple", "Women", "../images/tshirt15.png", "Turn up the heat with our Spicy Purple Tee! This vibrant purple shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a bold pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.", 28.99, 14),
 ];
-
-// the index will be the item id, and the value at each position the qty 
-    // an alternative would have been to use a HM, but it cannot be saved to localStorage, so we will use a simple JS array
-
-
-// main function     
-function addToBasket(productId){
-    let basketInStorage = localStorage.getItem('basketProducts');
-    const numberOfItems = products.length;
-
-    // Initialize basket if it doesn't exist
-    if(basketInStorage === null){
-        basketProducts = new Array(numberOfItems).fill(0);
-        saveBasketToLS(basketProducts);
-        basketInStorage = localStorage.getItem('basketProducts'); // Get it back as string
-    }
-    
-    // Convert string from localStorage to array
-    let basket = basketFromLStoArray(basketInStorage);
-    increaseProductCounter(productId, basket);
-    popUp();
-}
-
-// helper function - saves array to localStorage as comma-separated string
-function saveBasketToLS(basketArray){
-    localStorage.setItem('basketProducts', basketArray.join(','));
-}
-
-// helper function - converts localStorage string to array of numbers
-function basketFromLStoArray(basketString){
-    return basketString.split(',').map(item => Number(item));
-}
-
-// helper function - increases quantity for a product
-function increaseProductCounter(productId, basket){
-    /*
-        if the button add to basket is clicked, 
-            then increase the value of the index productId + 1 
-                Make sure it is a Number
-    */
-    basket[productId] = basket[productId] + 1;
-    saveBasketToLS(basket);
-    
-    //console.log('Product ' + productId + ' quantity: ' + basket[productId]);
-}
-
-//TODO: discuss popUp
-function popUp(){
-    const popup = document.createElement("div");
-    popup.className = "popup";
-
-    popup.innerHTML = `
-        <p>Straight into your basket!</p>
-        <div class="checkmark">✓</div>
-    `;
-
-    document.body.appendChild(popup);
-
-    // Trigger animation
-    setTimeout(() => popup.classList.add("show"), 10);
-
-    // Hide after 2 seconds
-    setTimeout(() => {
-        popup.classList.remove("show");
-        setTimeout(() => popup.remove(), 350);
-    }, 1000);
-}
-
-
 
