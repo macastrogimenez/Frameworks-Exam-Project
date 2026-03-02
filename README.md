@@ -8,6 +8,8 @@
 
 ## Mini-project 1: Front-end
 
+Test
+
 ## Mini-project 2: Back-end
 
 ## Final project: joining front and back-end
