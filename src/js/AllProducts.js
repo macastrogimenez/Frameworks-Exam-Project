@@ -1,10 +1,3 @@
-// if there is a registered name in local storage, display a personalized message to the user
-var registeredName = localStorage.getItem("registeredName");
-if (registeredName) {
-  document.getElementById("message-for-user").textContent =
-    "See something you like, " + registeredName + "?";
-}
-
 // Bootstrap Dropdown menu to filter gender and color. Fetch the "filterDropdowns" section from the html first
 // each dropdown item has been given a data attribute, (e.g. "data-color="Red"), to identify if selected
 const filterDropdowns = document.getElementById("filterDropdowns");
