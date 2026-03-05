@@ -66,7 +66,9 @@ function renderBasketPage() {
   `;
 
   const basketBody = document.getElementById("basketBody");
-  const basketArray = basketFromLStoArray(localStorage.getItem("basketProducts"));
+  const basketArray = basketFromLStoArray(
+    localStorage.getItem("basketProducts"),
+  );
   let total = 0;
 
   for (let i = 0; i < basketArray.length; i++) {
