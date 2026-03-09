@@ -13,6 +13,7 @@ function store(event) {
   localStorage.setItem("lname", document.getElementById("lname").value);
   localStorage.setItem("username", document.getElementById("username").value);
   localStorage.setItem("password", password);
+  localStorage.setItem("loggedInUser", document.getElementById("username").value);
 
   alert("Registration successful!");
   window.location.href = "HomePage.html";
