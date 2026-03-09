@@ -67,7 +67,7 @@ function renderProducts() {
       (product) => `
     <div class="col-12 col-md-4 mb-3">
       <div class="card h-100">
-      <a href="ProductDetail.html?id=${product.id}"> 
+      <a href="ProductDetailPage.html?id=${product.id}"> 
         <img class="card-img-top" src="${product.image}" alt="${product.name}" />
         </a>
         <div class="card-body">
