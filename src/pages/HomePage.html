@@ -10,6 +10,17 @@
 </head>
 
 <body>
+    <div id="navbar"></div>
+    <script>
+        function includeHTML(elementId, file) {
+            fetch(file)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                });
+        }
+        includeHTML('navbar', 'NavigationBar.html');
+    </script>
     <main>
         <section class="py-5 bg-light">
             <div class="container">
