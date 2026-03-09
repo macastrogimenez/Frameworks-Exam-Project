@@ -38,8 +38,6 @@ filterDropdowns.innerHTML += `
     </div>
   `;
 
-// TODO: discuss changes -> products array exported to common JS file
-
 // fetch the productsRow div to insert the created cards from the array into the HTML
 const productsRow = document.getElementById("productsRow");
 
@@ -94,6 +92,5 @@ filterDropdowns.addEventListener("click", (e) => {
   // re-render cards immediately after filter state changes
   renderProducts();
 });
-// TODO: discuss changes in line 48 and 53
 
 renderProducts();
