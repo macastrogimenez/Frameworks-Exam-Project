@@ -66,7 +66,7 @@ const products = [
     "Sail into style with our Striped White Sailor Tee! This classic striped shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a nautical touch to your wardrobe, it's a must-have for anyone who loves timeless fashion with a modern twist.",
     false,
     28.99,
-    0.15,
+    0.0,
     3,
   ),
   new tShirt(
@@ -77,7 +77,7 @@ const products = [
     "Embrace your inner Tinky Winky with our Tinky Winky Purple Tee! This vibrant purple shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a playful pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
     false,
     24.99,
-    0.2,
+    0.0,
     4,
   ),
   new tShirt(
@@ -88,7 +88,7 @@ const products = [
     "Brighten up your day with our Sunny Yellow Tee! This vibrant yellow shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cheerful pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
     false,
     22.99,
-    0.25,
+    0.0,
     5,
   ),
   new tShirt(
@@ -191,3 +191,16 @@ const products = [
     14,
   ),
 ];
+
+// If the product has a discount, return true, otherwise false.
+function hasDiscount(product) {
+  return product.discount > 0;
+}
+// If the product has a discount, return the discounted price, otherwise return the original price.
+function getDiscountedPrice(product) {
+  return product.price * (1 - product.discount);
+}
+// Format the price to 2 decimal places and add the euro symbol in front.
+function formatPrice(amount) {
+  return `€ ${amount.toFixed(2)}`;
+}
