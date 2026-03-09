@@ -41,8 +41,8 @@ function placeOrder() {
 }
 
 // called by the removeButton next to every ite-> it retrieves basketProducts from localStorage, then reduces the number of products
-    // of a specific product id by one, saves basketProducts to localStorage once more and reloads the page.
-function removeFromBasket(prodId){
+// of a specific product id by one, saves basketProducts to localStorage once more and reloads the page.
+function removeFromBasket(prodId) {
   let basketArray = basketFromLStoArray(localStorage.getItem("basketProducts"));
   basketArray[prodId] = basketArray[prodId] - 1;
   saveBasketToLS(basketArray);
@@ -50,9 +50,9 @@ function removeFromBasket(prodId){
 }
 
 // It creates the table of products in the basket by retrieving the basketProducts array from localStorage
-  // then it iterates over every index and if the count > 0 it adds the product to the table with id, name,
-  // price per unit, quantity, total price and the possibility to remove an item. 
-  // Lastly, it calculates the total price of the basket
+// then it iterates over every index and if the count > 0 it adds the product to the table with id, name,
+// price per unit, quantity, total price and the possibility to remove an item.
+// Lastly, it calculates the total price of the basket
 function renderBasketPage() {
   const basket = document.getElementById("basket");
   if (!basket || typeof products === "undefined") return;
@@ -89,14 +89,19 @@ function renderBasketPage() {
   for (let i = 0; i < basketArray.length; i++) {
     if (basketArray[i] !== 0) {
       const prod = products[i];
-      total = Number(total + basketArray[i] * prod.price);
+      let priceToUse = prod.price;
+      if (hasDiscount(prod)) {
+        priceToUse = getDiscountedPrice(prod);
+      }
+
+      total = total + basketArray[i] * priceToUse;
       basketBody.innerHTML += `
         <tr>
           <td>#${i}<td/>
           <td>${prod.name}<td/>
-          <td>${prod.price} EUR<td/>
+          <td>${formatPrice(priceToUse)}<td/>
           <td>${basketArray[i]}<td/>
-          <td>${(basketArray[i] * prod.price).toFixed(2)} EUR<td/>
+          <td>${formatPrice(basketArray[i] * priceToUse)}<td/>
           <td><button id="removeButton" class="btn btn-dark" onclick="removeFromBasket(${i})">-</button></td>
         </tr>
     `;
@@ -109,7 +114,7 @@ function renderBasketPage() {
         <td><td/>
         <td><td/>
         <td><td/>
-        <td><b>${total.toFixed(2)} EUR<b/><td/>
+        <td><b>${formatPrice(total)}<b/><td/>
       </tr>
     `;
 }
