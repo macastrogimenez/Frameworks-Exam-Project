@@ -64,20 +64,22 @@ function renderBasketPage() {
   }
 
   basket.innerHTML += `
-    <table class="table">
-      <thead class="table-light">
-        <tr>
-          <th scope="col">Product Id<th/>
-          <th scope="col">Product Name<th/>
-          <th scope="col">Price Per Unit<th/>
-          <th scope="col">Quantity<th/>
-          <th scope="col">Total Price<th/>
-          <th scope="col">Remove an item<th/>
-        </tr>
-      </thead>
-      <tbody id="basketBody">
-      </tbody>
-    </table>
+    <div style="overflow-x:auto;">  
+      <table class="table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">Product Id<th/>
+            <th scope="col">Product Name<th/>
+            <th scope="col">Price Per Unit<th/>
+            <th scope="col">Quantity<th/>
+            <th scope="col">Total Price<th/>
+            <th scope="col">Remove an item<th/>
+          </tr>
+        </thead>
+        <tbody id="basketBody">
+        </tbody>
+      </table>
+    </div>
   `;
 
   const basketBody = document.getElementById("basketBody");
