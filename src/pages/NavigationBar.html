@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <title>Navbar</title>
 </head>
 
 <body>
@@ -14,8 +14,10 @@
         <a class="navbar-brand" href="HomePage.html">
             <img src="../images/brandlogo.png" alt="Brand logo" style="height: 60px; width: auto;">
         </a>
+
+        <!-- display username if logged in -->
         <a class="navbar-brand" id="userName" style="font-size: 1rem; display:none"></a>
-        <script src="../js/NavigationBar.js"></script>
+
         <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
                 <a class="nav-link" href="HomePage.html">Home</a>
@@ -30,8 +32,13 @@
                 <a class="nav-link" id="loginLink" href="LoginPage.html">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="logoutLink" href="#" onclick="logout(event)" style="display:none">Logout</a>
+                <a class="nav-link" id="logoutLink" href="#" style="display:none">Logout</a>
             </li>
         </ul>
+    </nav>
+
+
+    <script src="../js/NavigationBar.js"></script>
+</body>
 
 </html>
