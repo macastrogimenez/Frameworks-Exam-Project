@@ -1,10 +1,3 @@
-// if there is a registered name in local storage, display a personalized message to the user
-var registeredName = localStorage.getItem("registeredName");
-if (registeredName) {
-  document.getElementById("message-for-user").textContent =
-    "See something you like, " + registeredName + "?";
-}
-
 // Bootstrap Dropdown menu to filter gender and color. Fetch the "filterDropdowns" section from the html first
 // each dropdown item has been given a data attribute, (e.g. "data-color="Red"), to identify if selected
 const filterDropdowns = document.getElementById("filterDropdowns");
@@ -38,8 +31,17 @@ filterDropdowns.innerHTML += `
     </div>
   `;
 
-// fetch the productsRow div to insert the created cards from the array into the HTML
-const productsRow = document.getElementById("productsRow");
+// helper function to create price markup for products with discount and without discount.
+function displayprice(product) {
+  if (hasDiscount(product)) {
+    return `
+      <p class="mb-1 text-muted"><s>${formatPrice(product.price)}</s></p>
+      <p class="mb-2 fw-bold">${formatPrice(getDiscountedPrice(product))}</p>
+    `;
+  }
+
+  return `<p class="mb-2">${formatPrice(product.price)}</p>`;
+}
 
 // Sorting logic starts here
 let selectedColor = "All";
@@ -54,6 +56,10 @@ function renderProducts() {
       selectedGender === "All" || p.gender === selectedGender;
     return colorFilter && genderFilter;
   });
+
+  // fetch the productsRow div to insert the created cards from the array into the HTML
+  const productsRow = document.getElementById("productsRow");
+
   // Turn the filtered items into cards and place them in productsRow div
   // map() creates one card string for each filtered product
   // join() combines all the card strings into a single string (because innerHTML needs a single string))
@@ -70,7 +76,7 @@ function renderProducts() {
         </a>
         <div class="card-body">
           <h5 class="card-title">${product.name}</h5>
-          <p align=left>${product.price} EUR</p>
+          ${displayprice(product)}
           <button id="basketButton" class="btn btn-dark" onclick="addToBasket(${product.id})" >Add to basket</button>
         </div>
       </div>
