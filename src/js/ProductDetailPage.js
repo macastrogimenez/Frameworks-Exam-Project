@@ -1,18 +1,24 @@
 const params = new URLSearchParams(window.location.search);
-const productId = Number(params.get('id'));
+const productId = Number(params.get("id"));
 
-const product = products.find(tShirt => tShirt.id === productId);
+const product = products.find((tShirt) => tShirt.id === productId);
 
 document.title = `Product Detail: ${product.name}`;
 
-document.getElementById('title').innerHTML = `${product.name}`;
+document.getElementById("title").innerHTML = `${product.name}`;
 
-document.getElementById('ProductInfo').innerHTML += 
+const priceMarkup = hasDiscount(product)
+  ? `
+      <h5 class="card-title mb-1 text-muted"><s>${formatPrice(product.price)}</s></h5>
+      <h5 class="card-title">${formatPrice(getDiscountedPrice(product))}</h5>
+    `
+  : `<h5 class="card-title">${formatPrice(product.price)}</h5>`;
 
-`<div class="card mb-3" style="max-width: 60%;">
+document.getElementById("ProductInfo").innerHTML += `
+<div class="card mb-3" style="max-width: 60%;">
     <img src="${product.image}" class="card-img-top" >
     <div class="card-body">
-        <h5 class="card-title">${product.price} EUR</h5>
+        ${priceMarkup}
         <p class="card-text">${product.description}</p>
         <p class="card-text" id="gender">${product.gender}</p>
         <p class="card-text"><small class="text-body-secondary">Product Id: #${product.id}</small></p>
@@ -32,9 +38,6 @@ document.getElementById('ProductInfo').innerHTML +=
 </div>
 `;
 
-
-document.getElementById('basketButton').onclick = () => {
-    addToBasket(productId);
-}
-
-
+document.getElementById("basketButton").onclick = () => {
+  addToBasket(productId);
+};
