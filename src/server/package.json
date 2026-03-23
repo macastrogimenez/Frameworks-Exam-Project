@@ -1,0 +1,24 @@
+{
+  "name": "frameworks-exam-project",
+  "version": "1.0.0",
+  "description": "[Jira](https://itu-frameworks.atlassian.net/jira/software/projects/KAN/boards/1 \"Kanban for project management\")",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macastrogimenez/Frameworks-Exam-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/macastrogimenez/Frameworks-Exam-Project/issues"
+  },
+  "homepage": "https://github.com/macastrogimenez/Frameworks-Exam-Project#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
