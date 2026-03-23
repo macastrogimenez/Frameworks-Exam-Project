@@ -1,0 +1,167 @@
+[
+  {
+    "name": "Classic Black Tee",
+    "color": "Black",
+    "gender": "Women",
+    "image": "../images/tshirt1.png",
+    "description": "A timeless black tee that pairs well with any outfit. Made from soft, breathable cotton for all-day comfort.",
+    "newArrival": false,
+    "price": 24.99,
+    "discount": 0.3,
+    "id": 0
+  },
+  {
+    "name": "Flamin' Hot Red Tee",
+    "color": "Red",
+    "gender": "Women",
+    "image": "../images/tshirt2.png",
+    "description": "Turn up the heat with our Flamin' Hot Red Tee! This vibrant red shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a bold pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": false,
+    "price": 26.99,
+    "discount": 0.2,
+    "id": 1
+  },
+  {
+    "name": "Ocean Blue Tee",
+    "color": "Blue",
+    "gender": "Women",
+    "image": "../images/tshirt3.png",
+    "description": "Dive into style with our Ocean Blue Tee! This vibrant blue shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a refreshing pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": false,
+    "price": 22.99,
+    "discount": 0.5,
+    "id": 2
+  },
+  {
+    "name": "Striped White Sailor Tee",
+    "color": "White",
+    "gender": "Men",
+    "image": "../images/tshirt4.png",
+    "description": "Sail into style with our Striped White Sailor Tee! This classic striped shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a nautical touch to your wardrobe, it's a must-have for anyone who loves timeless fashion with a modern twist.",
+    "newArrival": false,
+    "price": 28.99,
+    "discount": 0,
+    "id": 3
+  },
+  {
+    "name": "Tinky Winky Purple Tee",
+    "color": "Purple",
+    "gender": "Men",
+    "image": "../images/tshirt5.png",
+    "description": "Embrace your inner Tinky Winky with our Tinky Winky Purple Tee! This vibrant purple shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a playful pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": false,
+    "price": 24.99,
+    "discount": 0,
+    "id": 4
+  },
+  {
+    "name": "Sunny Yellow Tee",
+    "color": "Yellow",
+    "gender": "Women",
+    "image": "../images/tshirt6.png",
+    "description": "Brighten up your day with our Sunny Yellow Tee! This vibrant yellow shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cheerful pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": false,
+    "price": 22.99,
+    "discount": 0,
+    "id": 5
+  },
+  {
+    "name": "Capri-Sun Orange Tee",
+    "color": "Orange",
+    "gender": "Men",
+    "image": "../images/tshirt7.png",
+    "description": "Dive into summer vibes with our Capri-Sun Orange Tee! This vibrant orange shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a sunny pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": true,
+    "price": 26.99,
+    "discount": 0,
+    "id": 6
+  },
+  {
+    "name": "Trendy Teal Tee",
+    "color": "Blue",
+    "gender": "Men",
+    "image": "../images/tshirt8.png",
+    "description": "Make a splash with our Trendy Teal Tee! This vibrant teal shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cool pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": true,
+    "price": 29.99,
+    "discount": 0,
+    "id": 7
+  },
+  {
+    "name": "Earth Green Tee",
+    "color": "Green",
+    "gender": "Women",
+    "image": "../images/tshirt9.png",
+    "description": "Embrace nature with our Earth Green Tee! This vibrant green shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a natural pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": true,
+    "price": 24.99,
+    "discount": 0,
+    "id": 8
+  },
+  {
+    "name": "Army Green Tee",
+    "color": "Green",
+    "gender": "Men",
+    "image": "../images/tshirt10.png",
+    "description": "Go for a rugged look with our Army Green Tee! This versatile green shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a military-inspired touch to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": false,
+    "price": 22.99,
+    "discount": 0,
+    "id": 9
+  },
+  {
+    "name": "Washed Black Tee",
+    "color": "Black",
+    "gender": "Men",
+    "image": "../images/tshirt11.png",
+    "description": "Add a vintage vibe to your wardrobe with our Washed Black Tee! This faded black shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a worn-in pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": false,
+    "price": 28.99,
+    "discount": 0,
+    "id": 10
+  },
+  {
+    "name": "Off-White Tee",
+    "color": "White",
+    "gender": "Men",
+    "image": "../images/tshirt12.png",
+    "description": "Keep it classic with our Off-White Tee! This versatile off-white shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a neutral pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": false,
+    "price": 20,
+    "discount": 0,
+    "id": 11
+  },
+  {
+    "name": "Washed Red Tee",
+    "color": "Red",
+    "gender": "Men",
+    "image": "../images/tshirt13.png",
+    "description": "Add a vintage vibe to your wardrobe with our Washed Red Tee! This faded red shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a worn-in pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": true,
+    "price": 26.99,
+    "discount": 0,
+    "id": 12
+  },
+  {
+    "name": "Turquoise Tee",
+    "color": "Blue",
+    "gender": "Women",
+    "image": "../images/tshirt14.png",
+    "description": "Make a splash with our Turquoise Tee! This vibrant turquoise shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a cool pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": true,
+    "price": 29.99,
+    "discount": 0,
+    "id": 13
+  },
+  {
+    "name": "Spicy Purple Tee",
+    "color": "Purple",
+    "gender": "Women",
+    "image": "../images/tshirt15.png",
+    "description": "Turn up the heat with our Spicy Purple Tee! This vibrant purple shirt is made from soft, breathable cotton for all-day comfort. Perfect for adding a bold pop of color to your wardrobe, it's a must-have for anyone who loves to make a statement with their style.",
+    "newArrival": true,
+    "price": 28.99,
+    "discount": 0,
+    "id": 14
+  }
+]
