@@ -1,0 +1,26 @@
+[
+  {
+    "fname": "Mia",
+    "lname": "Anderson",
+    "username": "mia.anderson",
+    "password": "MiaPass123!"
+  },
+  {
+    "fname": "Lucas",
+    "lname": "Bennett",
+    "username": "lucas.bennett",
+    "password": "LucasPass123!"
+  },
+  {
+    "fname": "Sofia",
+    "lname": "Carter",
+    "username": "sofia.carter",
+    "password": "SofiaPass123!"
+  },
+  {
+    "fname": "Ethan",
+    "lname": "Diaz",
+    "username": "ethan.diaz",
+    "password": "EthanPass123!"
+  }
+]
