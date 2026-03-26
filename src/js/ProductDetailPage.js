@@ -1,20 +1,22 @@
 const params = new URLSearchParams(window.location.search);
 const productId = Number(params.get("id"));
 
-const product = products.find((tShirt) => tShirt.id === productId);
+// Fetch a specific product from Products-API (/products/:id endpoint).
+fetch(`http://localhost:3000/products/${productId}`)
+  .then((response) => response.json())
+  .then((product) => {
+    document.title = `Product Detail: ${product.name}`;
 
-document.title = `Product Detail: ${product.name}`;
+    document.getElementById("title").innerHTML = `${product.name}`;
 
-document.getElementById("title").innerHTML = `${product.name}`;
-
-const priceMarkup = hasDiscount(product)
-  ? `
+    const priceMarkup = hasDiscount(product)
+      ? `
       <h5 class="card-title mb-1 text-muted"><s>${formatPrice(product.price)}</s></h5>
       <h5 class="card-title">${formatPrice(getDiscountedPrice(product))}</h5>
     `
-  : `<h5 class="card-title">${formatPrice(product.price)}</h5>`;
+      : `<h5 class="card-title">${formatPrice(product.price)}</h5>`;
 
-document.getElementById("ProductInfo").innerHTML += `
+    document.getElementById("ProductInfo").innerHTML += `
 <div class="card mb-3" style="max-width: 60%;">
     <img src="${product.image}" class="card-img-top" >
     <div class="card-body">
@@ -37,6 +39,7 @@ document.getElementById("ProductInfo").innerHTML += `
 </div>
 </div>
 `;
+  });
 
 document.getElementById("basketButton").onclick = () => {
   addToBasket(productId);
