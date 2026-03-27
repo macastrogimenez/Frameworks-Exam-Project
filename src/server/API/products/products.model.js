@@ -22,3 +22,24 @@ export async function getProductByID(productId) {
     throw new Error(`Product with ID:${productId} doesn't exist`);
   }
 }
+
+
+//return a product based on color
+export async function getByColor(color) {
+  try {
+    let productArray = await getAll();
+    return productArray.filter((product) => product.color === color);
+  } catch (err) {
+    throw new Error(`No products found with color: ${color}`);
+  }
+}
+
+//return a product based on gender
+export async function getByGender(gender) {
+  try {
+    let productArray = await getAll();
+    return productArray.filter((product) => product.gender === gender);
+  } catch (err) {
+    throw new Error(`No products found with gender: ${gender}`);
+  }
+}

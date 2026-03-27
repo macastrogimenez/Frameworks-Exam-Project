@@ -9,5 +9,11 @@ export const productsRouter = express.Router();
 //Get all products
 productsRouter.get("/products", getAllProducts);
 
+//Get a product by color
+productsRouter.get("/products/color=:color", getAllProducts);
+
+//Get a product by gender
+productsRouter.get("/products/gender=:gender", getAllProducts);
+
 //Get a specific product by ID
 productsRouter.get("/products/:id", getProduct);
