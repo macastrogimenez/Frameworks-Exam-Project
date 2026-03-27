@@ -1,3 +1,5 @@
+let apiProducts = [];
+
 // Bootstrap Dropdown menu to filter gender and color. Fetch the "filterDropdowns" section from the html first
 // each dropdown item has been given a data attribute, (e.g. "data-color="Red"), to identify if selected
 const filterDropdowns = document.getElementById("filterDropdowns");
@@ -47,10 +49,14 @@ function displayprice(product) {
 let selectedColor = "All";
 let selectedGender = "All";
 
-function renderProducts() {
-  // Go through every item in the products array .
+async function renderProducts() {
+  // Fetch products from Products-API (/products endpoint).
+  const response = await fetch("http://localhost:3000/products");
+  apiProducts = await response.json();
+
+  // Go through every item in the products array
   // Catch user's selected product color and gender
-  const filteredProducts = products.filter((p) => {
+  const filteredProducts = apiProducts.filter((p) => {
     const colorFilter = selectedColor === "All" || p.color === selectedColor;
     const genderFilter =
       selectedGender === "All" || p.gender === selectedGender;
