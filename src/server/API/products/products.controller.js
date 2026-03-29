@@ -26,9 +26,18 @@ export async function getProduct(req, res) {
   }
 }
 
+export async function getMostImportantInfo(req, res) {
+  try {
+    let importantInfo = await productsModel.getMostImportantInfo();
+    res.json(importantInfo);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
+
 export async function getFilteredProducts(req, res) {
   try {
-    let filteredProducts = await productsModel.getAll();
+    let filteredProducts = await productsModel.getMostImportantInfo();
     const { color, gender } = req.query;
 
     // Filter products based on query parameters if they are provided.
