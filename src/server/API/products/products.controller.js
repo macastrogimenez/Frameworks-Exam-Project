@@ -34,9 +34,9 @@ export async function getFilteredProducts(req, res) {
     // Filter products based on query parameters if they are provided.
     if (color) {
       const filterColor = color.toString().toLowerCase();
-      filteredProducts = filteredProducts.filter((product) =>
-        product.color?.toString().toLowerCase() === filterColor
-      );
+      filteredProducts = filteredProducts.filter((product) => {
+        return product.color?.toString().toLowerCase() === filterColor;
+      });
     }
 
     if (gender) {

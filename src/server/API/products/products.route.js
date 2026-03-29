@@ -6,11 +6,8 @@ export const productsRouter = express.Router();
 
 // API endpoints for products
 
-//Get all products
-productsRouter.get("/products", getAllProducts);
+//Get all products or filtered products
+productsRouter.get("/products", getFilteredProducts);
 
 //Get a specific product by ID
 productsRouter.get("/products/:id", getProduct);
-
-//Get filtered products by color and gender
-productsRouter.get("/products", getFilteredProducts);
