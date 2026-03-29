@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllProducts, getProduct } from "./products.controller.js";
+import { getAllProducts, getProduct, getFilteredProducts } from "./products.controller.js";
 export const productsRouter = express.Router();
 // The controller handles request/response logic.
 //The model reads data from products.json.
@@ -11,3 +11,6 @@ productsRouter.get("/products", getAllProducts);
 
 //Get a specific product by ID
 productsRouter.get("/products/:id", getProduct);
+
+//Get filtered products by color and gender
+productsRouter.get("/products", getFilteredProducts);

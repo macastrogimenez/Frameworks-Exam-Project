@@ -25,3 +25,29 @@ export async function getProduct(req, res) {
     res.status(400).send(error.message); // if the JSON file can't be read.
   }
 }
+
+export async function getFilteredProducts(req, res) {
+  try {
+    let filteredProducts = await productsModel.getAll();
+    const { color, gender } = req.query;
+
+    // Filter products based on query parameters if they are provided.
+    if (color) {
+      const filterColor = color.toString().toLowerCase();
+      filteredProducts = filteredProducts.filter((product) =>
+        product.color?.toString().toLowerCase() === filterColor
+      );
+    }
+
+    if (gender) {
+      const filterGender = gender.toString().toLowerCase();
+      filteredProducts = filteredProducts.filter((product) =>
+        product.gender?.toString().toLowerCase() === filterGender
+      );
+    }
+    // Send the filtered products as a JSON response.
+    res.json(filteredProducts);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
