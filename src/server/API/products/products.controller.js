@@ -25,3 +25,13 @@ export async function getProduct(req, res) {
     res.status(400).send(error.message); // if the JSON file can't be read.
   }
 }
+
+//Get all product categories
+export async function getCategories(req, res) {
+  try {
+    let categories = await productsModel.getCategories();
+    res.json(categories);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
