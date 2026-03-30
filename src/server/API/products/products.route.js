@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllProducts, getProduct, getFilteredProducts } from "./products.controller.js";
+import { getAllProducts, getProduct, getFilteredProducts, getCategories } from "./products.controller.js";
 export const productsRouter = express.Router();
 // The controller handles request/response logic.
 //The model reads data from products.json.
