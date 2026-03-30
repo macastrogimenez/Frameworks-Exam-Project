@@ -1,0 +1,5 @@
+
+###
+// Returns basket for a single user by ID (id = 3)
+GET http://localhost:3000/basket/3 HTTP/1.1
+
