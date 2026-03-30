@@ -26,6 +26,16 @@ export async function getProduct(req, res) {
   }
 }
 
+//Get all product categories
+export async function getCategories(req, res) {
+  try {
+    let categories = await productsModel.getCategories();
+    res.json(categories);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
+
 export async function getMostImportantInfo(req, res) {
   try {
     let importantInfo = await productsModel.getMostImportantInfo();

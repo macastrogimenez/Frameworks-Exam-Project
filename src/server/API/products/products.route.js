@@ -12,6 +12,9 @@ productsRouter.get("/products", getFilteredProducts);
 //Get all information about all products
 productsRouter.get("/products/all", getAllProducts);
 
+//Get product categories
+productsRouter.get("/products/categories", getCategories);
+
 //Get a specific product by ID
 productsRouter.get("/products/:id", getProduct);
 
