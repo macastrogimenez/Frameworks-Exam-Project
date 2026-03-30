@@ -24,6 +24,24 @@ export async function getProductByID(productId) {
   }
 }
 
+export async function getMostImportantInfo() {
+  try {
+    let allProducts = await getAll();
+    let importantInfo = allProducts.map((product) => {
+      return {
+        price: product.price,
+        color: product.color,
+        name: product.name,
+        id: product.id,
+        gender: product.gender,
+      };
+    });
+    return importantInfo;
+  } catch (err) {
+    throw new Error(`Couldn't read products data`);
+  }
+}
+
 // return unique categories from products
 export async function getCategories() {
     try {

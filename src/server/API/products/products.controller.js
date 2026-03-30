@@ -35,3 +35,38 @@ export async function getCategories(req, res) {
     res.status(400).send(error.message);
   }
 }
+
+export async function getMostImportantInfo(req, res) {
+  try {
+    let importantInfo = await productsModel.getMostImportantInfo();
+    res.json(importantInfo);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
+
+export async function getFilteredProducts(req, res) {
+  try {
+    let filteredProducts = await productsModel.getMostImportantInfo();
+    const { color, gender } = req.query;
+
+    // Filter products based on query parameters if they are provided.
+    if (color) {
+      const filterColor = color.toString().toLowerCase();
+      filteredProducts = filteredProducts.filter((product) => {
+        return product.color?.toString().toLowerCase() === filterColor;
+      });
+    }
+
+    if (gender) {
+      const filterGender = gender.toString().toLowerCase();
+      filteredProducts = filteredProducts.filter((product) =>
+        product.gender?.toString().toLowerCase() === filterGender
+      );
+    }
+    // Send the filtered products as a JSON response.
+    res.json(filteredProducts);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
