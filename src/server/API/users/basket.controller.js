@@ -3,8 +3,6 @@ import * as basketModel from "./basket.model.js";
 // Post a basket for a user based on username.
 export async function createBasket(req, res) {
   try {
-    // get username from URL path (e.g. /user/mia.anderson/basket.)
-    // and basket data from the request body.
     const username = req.params.username;
     const basket = req.body.basket;
 
