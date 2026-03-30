@@ -1,0 +1,25 @@
+
+###
+// Returns basket for a single user by ID (id = 3)
+GET http://localhost:3000/basket/3 HTTP/1.1
+
+
+###
+// 201: Create basket for user has an empty basket
+// add product id 0 with quantity 1, product id 5 with quantity 2
+POST http://localhost:3000/user/lucas.bennett/basket HTTP/1.1
+Content-Type: application/json
+
+{
+  "basket": [[0,1],[5,2]] 
+}
+
+###
+
+// 409: Attempt to create basket for user who already has one(Mia)
+POST http://localhost:3000/user/mia.anderson/basket HTTP/1.1
+Content-Type: application/json
+
+{
+  "basket": [[1,1]]
+}
