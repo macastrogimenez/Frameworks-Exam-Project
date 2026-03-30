@@ -22,3 +22,21 @@ export async function getProductByID(productId) {
     throw new Error(`Product with ID:${productId} doesn't exist`);
   }
 }
+
+export async function getMostImportantInfo() {
+  try {
+    let allProducts = await getAll();
+    let importantInfo = allProducts.map((product) => {
+      return {
+        price: product.price,
+        color: product.color,
+        name: product.name,
+        id: product.id,
+        gender: product.gender,
+      };
+    });
+    return importantInfo;
+  } catch (err) {
+    throw new Error(`Couldn't read products data`);
+  }
+}
