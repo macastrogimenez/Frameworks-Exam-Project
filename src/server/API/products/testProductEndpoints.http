@@ -1,0 +1,31 @@
+
+// Returns all available categories and their unique values (gender, color, newArrival, discount)
+GET http://localhost:3000/products/categories HTTP/1.1
+
+###
+
+// Returns most important information about all products with no filters (price, color, name, id, gender)
+GET http://localhost:3000/products HTTP/1.1
+
+###
+
+// Returns only products filtered where color is Blue (price, color, name, id, gender)
+GET http://localhost:3000/products?color=Blue HTTP/1.1
+
+###
+
+// Returns only products filtered where gender is Men (price, color, name, id, gender)
+GET http://localhost:3000/products?gender=Men HTTP/1.1
+
+###
+// Returns only products filtered matching both gender Men and color Blue
+GET http://localhost:3000/products?gender=Men&color=Blue HTTP/1.1
+
+###
+// Return all details about all products
+GET http://localhost:3000/products/all HTTP/1.1
+
+###
+// Returns all details for a single product by ID (id = 3)
+GET http://localhost:3000/products/3 HTTP/1.1
+
