@@ -8,7 +8,16 @@ export async function getBasket(req, res) {
       return res.status(400).json({ error: "username query parameter is required" });
     }
 
+    //let userBasket = await basketModel.getJsonBasketFromUser(username);
+    // if (userBasket === false) {
+    //   return res.status(400).json({ error: "username does not match any existing record" });
+    // }
+
     let basket = await basketModel.getBasket(username);
+
+    if (basket === null){
+      return res.status(400).json({ error: "username does not match any existing record" });
+    }
 
     if (!basket) {
       return res.status(404).json({ error: "Basket not found" });

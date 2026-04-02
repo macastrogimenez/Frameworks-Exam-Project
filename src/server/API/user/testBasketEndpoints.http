@@ -3,3 +3,7 @@
 // Returns basket for a single user by username
 GET http://localhost:3000/basket?username=mia.anderson HTTP/1.1
 
+###
+// Returns 404 since the user does not exist - no basket can be found
+GET http://localhost:3000/basket?username=wrong.name HTTP/1.1
+

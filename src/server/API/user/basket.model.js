@@ -3,18 +3,19 @@ import * as productF from "../products/products.model.js"
 const ALL_USERS_JSON = "./API/user/users.json";
 
 // helper function to get basket in most basic format from JSON
-async function getJsonBasketFromUser(username){
-  // TODO: complete helper function 
+export async function getJsonBasketFromUser(username){
+
   let usersTxt = await fs.readFile(ALL_USERS_JSON); // reading users file
   let users = JSON.parse(usersTxt); // parsing data from JSON to JS
-
   let user = users.find(person => person.username === username); // find user by username
-  return user?.basket ?? [];
+  return user?.basket ?? false;
 }
-
 
 export async function getBasket(username) {
   let userBasket = await getJsonBasketFromUser(username);
+  if (userBasket === false) {
+    return null;
+  }
 
   let products = await productF.getMostImportantInfo();
 
