@@ -3,7 +3,8 @@ import * as basketModel from "./basket.model.js";
 //Get basket by username
 export async function getBasket(req, res) {
   try {
-    let username = req.query.username;
+    let username = req.params.username;
+    
     if (!username) {
       return res.status(400).json({ error: "username query parameter is required" });
     }
