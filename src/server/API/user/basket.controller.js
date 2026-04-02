@@ -4,7 +4,7 @@ import * as basketModel from "./basket.model.js";
 export async function getBasket(req, res) {
   try {
     let username = req.params.username;
-    
+
     if (!username) {
       return res.status(400).json({ error: "username query parameter is required" });
     }
@@ -17,7 +17,7 @@ export async function getBasket(req, res) {
     let basket = await basketModel.getBasket(username);
 
     if (basket === null){
-      return res.status(400).json({ error: "username does not match any existing record" });
+      return res.status(404).json({ error: "username not found" });
     }
 
     if (!basket) {
