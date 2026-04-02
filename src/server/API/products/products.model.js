@@ -51,6 +51,10 @@ export async function getCategories() {
     // Parse the JSON file and extract the categories array
     let configuredCategories = JSON.parse(categoriesTxt).categories;
 
+    if(configuredCategories===null){
+      return null;
+    }
+
     // Create an array of unique, trimmed category names
     // Filter out empty strings and trim whitespace, then remove duplicates using Set
     let majorCategories = [...new Set(
