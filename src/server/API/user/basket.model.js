@@ -12,13 +12,19 @@ export async function getJsonBasketFromUser(username){
 }
 
 export async function getBasket(username) {
+  // get the basket from the users.json file for the corresponding user
   let userBasket = await getJsonBasketFromUser(username);
+
+  // if the user does not exist return null for error handling on controller
   if (userBasket === false) {
     return null;
   }
 
+  // getting most important info about all products
   let products = await productF.getMostImportantInfo();
 
+  // from the original array userBasket map it to create an array which also retrieves price, name and discount 
+  // saved as basketItems.
   let basketItems = userBasket
     .map(([prodId, quantity]) => {
       let product = products.find((p) => p.id === prodId);
@@ -28,19 +34,22 @@ export async function getBasket(username) {
     })
     .filter((item) => item !== null);
 
+  // calculating total price by folding every element of the bakset
   let totalPrice = basketItems.reduce(
     (total, [, , quantity, unitPrice, discount]) => total + quantity * unitPrice * (1-discount),
     0
   );
 
+  //rounding total price
   const roundedPrice = totalPrice.toFixed(2);
 
+  // adding labels to every product field 
   let labelledBasketItems = basketItems.map(([id,prodName,qty,price,disc]) => {
     return {productId: id, productName: prodName, quantity: qty, unitPrice: price, discount: disc};
   }
 
   )
-
+  //adding labels to every major basket field and returning
   return {username: username, basket: labelledBasketItems, totalPrice: roundedPrice};
 }
 
