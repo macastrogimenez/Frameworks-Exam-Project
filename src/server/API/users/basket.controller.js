@@ -43,3 +43,25 @@ export async function getBasket(req, res) {
     res.status(400).send(error.message); // if the JSON file can't be read.
   }
 }
+
+//Put a product in a specific user's basket
+
+export async function updateBasket(req, res) {
+  try {
+    let username = req.params.username;
+    let product = req.body.product;
+
+    let updatedBasket = await basketModel.updateBasket(username, product);
+
+    if (!updatedBasket) {
+      return res.status(404).json({ error: "Basket or user not found" });
+    }
+
+    // If basket and user are found, send the updated basket as JSON response.
+    res.json(updatedBasket);
+
+  } catch (error) {
+    res.status(400).send(error.message);
+
+  }
+}
