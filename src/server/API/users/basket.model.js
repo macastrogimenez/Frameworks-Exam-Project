@@ -68,3 +68,28 @@ export async function getBasket(username) {
   //  4. calculate total price and list it
   //  5. return username, products array [id, name, qty, unit price], total price
 }
+
+//Put a product to a specific user's basket
+
+export async function updateBasket(username, product) {
+  let users = await getAllUsers();
+  let user = users.find((u) => u.username === username);
+
+  if (!user) return null;
+
+  /* 
+  If the product is already in the basket, 
+  increase the quantity, otherwise add the product to the basket 
+  */
+
+  let existingProduct = user.basket.find((p) => p[0] === product[0]);
+
+  if (existingProduct) {
+    existingProduct[1] += product[1];
+  } else {
+    user.basket.push(product);
+  }
+
+  await fs.writeFile(ALL_USERS_JSON, JSON.stringify(users));
+  return user;
+}

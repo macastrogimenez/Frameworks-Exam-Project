@@ -23,3 +23,25 @@ Content-Type: application/json
 {
   "basket": [[1,1]]
 }
+
+###
+
+// 200: Add a product to a specific user's basket
+// Add 2 products with id 0 to a user's basket
+PUT http://localhost:3000/user/mia.anderson/basket HTTP/1.1
+Content-Type: application/json
+
+{
+  "product": [0,2] 
+}
+
+###
+
+// 404: Attempt to add a product to a non-existing user's basket
+PUT http://localhost:3000/user/dummy.user/basket HTTP/1.1
+Content-Type: application/json
+
+{
+  "product": [0, 2]
+}
+
