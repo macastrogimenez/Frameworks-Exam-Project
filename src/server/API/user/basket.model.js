@@ -1,38 +1,46 @@
 import * as fs from "fs/promises";
-import * as productF from "../products/products.model"
-const ALL_PRODUCTS_JSON = "./API/products/products.json";
-
-
-// helper function to get all products relevant info for basket
-async function getProductsMostImportantInfo() {
-  try {
-    let allProducts = await productF.getAll(); // get all products from file
-    let importantInfo = allProducts.map((product) => {
-      return {
-        price: product.price,
-        name: product.name,
-        id: product.id,
-      };
-    });
-    return importantInfo;
-  } catch (err) {
-    throw new Error(`Couldn't read products data`);
-  }
-}
+import * as productF from "../products/products.model.js"
+const ALL_USERS_JSON = "./API/user/users.json";
 
 // helper function to get basket in most basic format from JSON
-function getJsonBasketFromUser (username){
+async function getJsonBasketFromUser(username){
   // TODO: complete helper function 
+  let usersTxt = await fs.readFile(ALL_USERS_JSON); // reading users file
+  let users = JSON.parse(usersTxt); // parsing data from JSON to JS
+
+  let user = users.find(person => person.username === username); // find user by username
+  return user?.basket ?? [];
 }
+
 
 export async function getBasket(username) {
-  // TODO: complete as below
+  let userBasket = await getJsonBasketFromUser(username);
 
-  // this function should:
-  //  1. use the getJsonBasketFromUser
-  //  2. use the getProductsMostImportantInfo and filter them against the JSON basket from 1.
-  //  3. list products
-  //  4. calculate total price and list it
-  //  5. return username, products array [id, name, qty, unit price], total price 
+  let products = await productF.getMostImportantInfo();
+
+  let basketItems = userBasket
+    .map(([prodId, quantity]) => {
+      let product = products.find((p) => p.id === prodId);
+      if (!product) return null;
+
+      return [prodId, product.name, quantity, product.price, product.discount];
+    })
+    .filter((item) => item !== null);
+
+  let totalPrice = basketItems.reduce(
+    (total, [, , quantity, unitPrice, discount]) => total + quantity * unitPrice * (1-discount),
+    0
+  );
+
+  const roundedPrice = totalPrice.toFixed(2);
+
+  let labelledBasketItems = basketItems.map(([id,prodName,qty,price,disc]) => {
+    return {productId: id, productName: prodName, quantity: qty, unitPrice: price, discount: disc};
+  }
+
+  )
+
+  return {username: username, basket: labelledBasketItems, totalPrice: roundedPrice};
 }
+
 

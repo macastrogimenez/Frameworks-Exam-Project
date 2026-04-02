@@ -7,5 +7,5 @@ export const basketRouter = express.Router();
 // API endpoints for products
 
 //Get basket for a certain user
-basketRouter.get("/basket/:username", getBasket);
+basketRouter.get("/basket", getBasket);
 
