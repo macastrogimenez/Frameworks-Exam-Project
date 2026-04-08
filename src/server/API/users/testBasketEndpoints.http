@@ -45,3 +45,19 @@ Content-Type: application/json
   "product": [0, 2]
 }
 
+###
+
+// 200: Remove a product from a specific user's basket
+// Remove one product with id 0 from a user's basket
+DELETE http://localhost:3000/user/mia.anderson/basket/0 HTTP/1.1
+
+###
+
+// 404: Attempt to remove a product that doesn't exist in the basket
+DELETE http://localhost:3000/user/mia.anderson/basket/999 HTTP/1.1
+
+###
+
+// 404: Attempt to remove a product from a non-existing user's basket
+DELETE http://localhost:3000/user/dummy.user/basket/0 HTTP/1.1
+

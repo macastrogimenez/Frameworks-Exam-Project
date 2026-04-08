@@ -93,3 +93,29 @@ export async function updateBasket(username, product) {
   await fs.writeFile(ALL_USERS_JSON, JSON.stringify(users));
   return user;
 }
+
+// Remove a product from a specific user's basket
+export async function removeFromBasket(username, productId) {
+  let users = await getAllUsers();
+  let user = users.find((u) => u.username === username);
+
+  if (!user) return null;
+
+  let productIndex = user.basket.findIndex((p) => p[0] === productId);
+
+  if (productIndex === -1) {
+    return "not_found";
+  }
+
+  // Decrease the quanitaty of product or full entry.
+  const currentQuantity = user.basket[productIndex][1];
+  if (currentQuantity > 1) {
+    user.basket[productIndex][1] = currentQuantity - 1;
+  } else {
+    // Splice modifies the original array, so we don't need to reassign it.
+    user.basket.splice(productIndex, 1);
+  }
+
+  await fs.writeFile(ALL_USERS_JSON, JSON.stringify(users));
+  return user;
+}

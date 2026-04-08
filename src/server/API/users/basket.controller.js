@@ -65,3 +65,26 @@ export async function updateBasket(req, res) {
 
   }
 }
+
+// Remove a product from user's basket
+export async function removeFromBasket(req, res) {
+  try {
+    let username = req.params.username;
+    let productId = parseInt(req.params.productId);
+
+    let updatedBasket = await basketModel.removeFromBasket(username, productId);
+
+    if (!updatedBasket) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    if (updatedBasket === "not_found") {
+      return res.status(404).json({ error: "Product not found in basket" });
+    }
+
+    res.json(updatedBasket);
+
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
