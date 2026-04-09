@@ -9,6 +9,9 @@ export const basketRouter = express.Router();
 // POST: Createbasket for one specific user based on username
 basketRouter.post("/user/:username/basket", createBasket);
 
+//Get basket for a certain user
+basketRouter.get("/user/:username/basket", getBasket);
+
 // PUT: Put a product to a specific user's basket
 basketRouter.put(("/user/:username/basket"), updateBasket);
 
