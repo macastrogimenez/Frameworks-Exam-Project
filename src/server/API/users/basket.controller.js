@@ -49,7 +49,6 @@ export async function updateBasket(req, res) {
 
   }
 }
-import * as basketModel from "./basket.model.js";
 
 //Get basket by username
 export async function getBasket(req, res) {
