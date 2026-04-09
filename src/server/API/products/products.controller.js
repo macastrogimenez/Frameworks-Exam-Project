@@ -30,6 +30,9 @@ export async function getProduct(req, res) {
 export async function getCategories(req, res) {
   try {
     let categories = await productsModel.getCategories();
+    if(categories===null){
+      return res.status(404).json({error: "No categories are set"});  
+    }
     res.json(categories);
   } catch (error) {
     res.status(400).send(error.message);

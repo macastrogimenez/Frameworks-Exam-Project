@@ -1,6 +1,5 @@
 import * as fs from "fs/promises";
 import * as productF from "../products/products.model.js";
-const ALL_PRODUCTS_JSON = "./API/products/products.json";
 const ALL_USERS_JSON = "./API/users/users.json";
 
 // return all users from JSON file
@@ -37,38 +36,6 @@ export async function createBasketForUser(username, basket) {
   }
 }
 
-// helper function to get all products relevant info for basket
-async function getProductsMostImportantInfo() {
-  try {
-    let allProducts = await productF.getAll(); // get all products from file
-    let importantInfo = allProducts.map((product) => {
-      return {
-        price: product.price,
-        name: product.name,
-        id: product.id,
-      };
-    });
-    return importantInfo;
-  } catch (err) {
-    throw new Error(`Couldn't read products data`);
-  }
-}
-
-// helper function to get basket in most basic format from JSON
-function getJsonBasketFromUser(username) {
-  // TODO: complete helper function
-}
-
-export async function getBasket(username) {
-  // TODO: complete as below
-  // this function should:
-  //  1. use the getJsonBasketFromUser
-  //  2. use the getProductsMostImportantInfo and filter them against the JSON basket from 1.
-  //  3. list products
-  //  4. calculate total price and list it
-  //  5. return username, products array [id, name, qty, unit price], total price
-}
-
 //Put a product to a specific user's basket
 
 export async function updateBasket(username, product) {
@@ -93,3 +60,56 @@ export async function updateBasket(username, product) {
   await fs.writeFile(ALL_USERS_JSON, JSON.stringify(users));
   return user;
 }
+
+// helper function to get basket in most basic format from JSON
+export async function getJsonBasketFromUser(username){
+
+  let usersTxt = await fs.readFile(ALL_USERS_JSON); // reading users file
+  let users = JSON.parse(usersTxt); // parsing data from JSON to JS
+  let user = users.find(person => person.username === username); // find user by username
+  return user?.basket ?? false;
+}
+
+export async function getBasket(username) {
+  // get the basket from the users.json file for the corresponding user
+  let userBasket = await getJsonBasketFromUser(username);
+
+  // if the user does not exist return null for error handling on controller
+  if (userBasket === false) {
+    return null;
+  }
+
+  // getting most important info about all products
+  let products = await productF.getMostImportantInfo();
+
+  // from the original array userBasket map it to create an array which also retrieves price, name and discount 
+  // saved as basketItems.
+  let basketItems = userBasket
+    .map(([prodId, quantity]) => {
+      let product = products.find((p) => p.id === prodId);
+      if (!product) return null;
+
+      return [prodId, product.name, quantity, product.price, product.discount];
+    })
+    .filter((item) => item !== null);
+
+  // calculating total price by folding every element of the bakset
+  let totalPrice = basketItems.reduce(
+    (total, [, , quantity, unitPrice, discount]) => total + quantity * unitPrice * (1-discount),
+    0
+  );
+
+  //rounding total price
+  const roundedPrice = totalPrice.toFixed(2);
+
+  // adding labels to every product field 
+  let labelledBasketItems = basketItems.map(([id,prodName,qty,price,disc]) => {
+    return {productId: id, productName: prodName, quantity: qty, unitPrice: price, discount: disc};
+  }
+
+  )
+  //adding labels to every major basket field and returning
+  return {username: username, basket: labelledBasketItems, totalPrice: roundedPrice};
+}
+
+

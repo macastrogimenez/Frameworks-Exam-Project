@@ -1,8 +1,4 @@
 
-###
-// Returns basket for a single user by ID (id = 3)
-GET http://localhost:3000/basket/3 HTTP/1.1
-
 
 ###
 // 201: Create basket for user has an empty basket
@@ -44,4 +40,17 @@ Content-Type: application/json
 {
   "product": [0, 2]
 }
+
+
+###
+// Returns basket for a single user by username
+GET http://localhost:3000/user/mia.anderson/basket HTTP/1.1
+
+###
+// Returns 404 since the user does not exist - no basket can be found
+GET http://localhost:3000/user/wrong.name/basket HTTP/1.1
+
+###
+// Returns an empty basket [] since the user has no items on it
+GET http://localhost:3000/user/ethan.diaz/basket HTTP/1.1
 

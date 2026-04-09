@@ -28,22 +28,6 @@ export async function createBasket(req, res) {
   }
 }
 
-//Get basket by username
-export async function getBasket(req, res) {
-  try {
-    let username = req.query;
-    let basket = await basketModel.getBasket(username);
-
-    if (!basket) {
-      return res.status(404).json({ error: "Product not found" });
-    }
-    // If product is found, send it as JSON response.
-    res.json(basket);
-  } catch (error) {
-    res.status(400).send(error.message); // if the JSON file can't be read.
-  }
-}
-
 //Put a product in a specific user's basket
 
 export async function updateBasket(req, res) {
@@ -65,3 +49,35 @@ export async function updateBasket(req, res) {
 
   }
 }
+import * as basketModel from "./basket.model.js";
+
+//Get basket by username
+export async function getBasket(req, res) {
+  try {
+    let username = req.params.username;
+
+    if (!username) {
+      return res.status(400).json({ error: "username query parameter is required" });
+    }
+
+    //let userBasket = await basketModel.getJsonBasketFromUser(username);
+    // if (userBasket === false) {
+    //   return res.status(400).json({ error: "username does not match any existing record" });
+    // }
+
+    let basket = await basketModel.getBasket(username);
+
+    if (basket === null){
+      return res.status(404).json({ error: "username not found" });
+    }
+
+    if (!basket) {
+      return res.status(404).json({ error: "Basket not found" });
+    }
+
+    res.json(basket);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
+
