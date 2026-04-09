@@ -1,5 +1,5 @@
 import express from "express";
-import { createBasket, updateBasket, removeFromBasket } from "./basket.controller.js";
+import { createBasket, getBasket, updateBasket, removeFromBasket } from "./basket.controller.js";
 export const basketRouter = express.Router();
 // The controller handles request/response logic.
 //The model reads data from products.json.

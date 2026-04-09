@@ -66,6 +66,10 @@ export async function removeFromBasket(req, res) {
     }
 
     res.json(updatedBasket);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
 
 //Get basket by username
 export async function getBasket(req, res) {
@@ -96,3 +100,5 @@ export async function getBasket(req, res) {
     res.status(400).send(error.message);
   }
 }
+
+
