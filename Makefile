@@ -2,4 +2,4 @@
 .PHONY: start
 
 start:
-	cd src/server && npm start
+	cd server && npm start
