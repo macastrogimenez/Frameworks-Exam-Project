@@ -1,6 +1,6 @@
 # T-shirt web shop project
 
-This is a sample project of a webshop in which we would sell different types of t-shirts. The idea is to implement a single page application in React connected to a back-end made with Node.js through a REST API using Express.
+This is a sample project of a web-shop in which we would sell different types of t-shirts. The idea is to implement a single page application in React connected to a back-end made with Node.js through a REST API using Express.
 Moreover, this web showcases the basic implementation of a basket and its operations, product catalogue overview, authentication, validation, as well as responsive design.
 
 ## Resources
@@ -19,7 +19,7 @@ Moreover, this web showcases the basic implementation of a basket and its operat
 
 ## Final project: joining front and back-end
 
-In this repository a complete version of the webshop can be found:
+In this repository a complete version of the web-shop can be found:
 
 - Back end: We will use the original REST API we have designed and connect it with
 - Front end: A new Front end designed using React, TS and JS
