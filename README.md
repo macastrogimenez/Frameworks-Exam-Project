@@ -7,13 +7,11 @@
 [Notion](https://www.notion.so/Exam-Project-30f863b9ac2e8018b81ac6c034b746fe "Page for project planning and brainstorming")
 
 ## Mini-project 1: Front-end
-https://github.com/macastrogimenez/miniproject1_webshop_frontEnd 
 
-
-Test
+[Github](https://github.com/macastrogimenez/miniproject1_webshop_frontEnd)
 
 ## Mini-project 2: Back-end
-https://github.com/macastrogimenez/miniproject2_webshop_server
 
+[Github](https://github.com/macastrogimenez/miniproject2_webshop_server)
 
 ## Final project: joining front and back-end

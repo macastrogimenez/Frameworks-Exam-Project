@@ -1,7 +1,7 @@
 import express from "express";
 import { productsRouter } from "./API/products/products.route.js";
-import { basketRouter } from "./API/users/basket.route.js";
-// Now epress handles when someone visits /products or /products/:id
+import { basketRouter } from "./API/basket/basket.route.js";
+// Now express handles when someone visits /products or /products/:id
 
 const app = express();
 const PORT = 3000;
