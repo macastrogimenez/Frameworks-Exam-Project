@@ -22,10 +22,6 @@ GET http://localhost:3000/products?gender=Men HTTP/1.1
 GET http://localhost:3000/products?gender=Men&color=Blue HTTP/1.1
 
 ###
-// Return all details about all products
-GET http://localhost:3000/products/all HTTP/1.1
-
-###
 // Returns all details for a single product by ID (id = 3)
 GET http://localhost:3000/products/3 HTTP/1.1
 
