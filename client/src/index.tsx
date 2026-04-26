@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './pages/app/App';
+import App from './App';
 
 /*
 IMPORTANT by @macastrogimenez: this is our main page - remember this is a single-page application
@@ -18,4 +18,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
