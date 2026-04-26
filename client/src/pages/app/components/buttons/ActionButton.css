@@ -1,0 +1,7 @@
+.btn.btn-dark {
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 24px;
+    border: 1px solid #000;
+}
