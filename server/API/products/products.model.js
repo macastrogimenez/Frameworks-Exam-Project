@@ -35,6 +35,8 @@ export async function getMostImportantInfo() {
         name: product.name,
         id: product.id,
         gender: product.gender,
+        image: product.image,
+        newArrival: product.newArrival,
       };
     });
     return importantInfo;
@@ -45,40 +47,54 @@ export async function getMostImportantInfo() {
 
 // return unique categories from products
 export async function getCategories() {
-    try {
+  try {
     // Fetch all products and categories file in parallel
-    let [products, categoriesTxt] = await Promise.all([getAll(), fs.readFile(ALL_CATEGORIES_JSON)]);
+    let [products, categoriesTxt] = await Promise.all([
+      getAll(),
+      fs.readFile(ALL_CATEGORIES_JSON),
+    ]);
     // Parse the JSON file and extract the categories array
     let configuredCategories = JSON.parse(categoriesTxt).categories;
 
-    if(configuredCategories===null){
+    if (configuredCategories === null) {
       return null;
     }
 
     // Create an array of unique, trimmed category names
     // Filter out empty strings and trim whitespace, then remove duplicates using Set
-    let majorCategories = [...new Set(
+    let majorCategories = [
+      ...new Set(
         configuredCategories
-        .filter((category) => typeof category === "string" && category.trim() !== "")
-        .map((category) => category.trim())
-    )]
+          .filter(
+            (category) =>
+              typeof category === "string" && category.trim() !== "",
+          )
+          .map((category) => category.trim()),
+      ),
+    ];
 
     // Build an object where each major category is a key with its subcategories as values
     return majorCategories.reduce(
-        (allCategories, category) => ({
-            ...allCategories,
-            // For each category, extract unique subcategory values from all products
-            [category]: [...new Set(
-                products
-                // Get the value of this category from each product (e.g., product.color, product.size)
-                .map((product) => product?.[category]) // '?'  If product is null or undefined, it returns undefined without throwing an error
-                    // If product exists, it accesses the dynamic property [category]
-                // Filter out null and undefined values to keep only valid subcategories
-                .filter((subCategory) => subCategory !== null && subCategory !== undefined)
-            )],
-        }),
-    {});
-    } catch (err) {
-        throw new Error("Categories could not be loaded");
-    }
+      (allCategories, category) => ({
+        ...allCategories,
+        // For each category, extract unique subcategory values from all products
+        [category]: [
+          ...new Set(
+            products
+              // Get the value of this category from each product (e.g., product.color, product.size)
+              .map((product) => product?.[category]) // '?'  If product is null or undefined, it returns undefined without throwing an error
+              // If product exists, it accesses the dynamic property [category]
+              // Filter out null and undefined values to keep only valid subcategories
+              .filter(
+                (subCategory) =>
+                  subCategory !== null && subCategory !== undefined,
+              ),
+          ),
+        ],
+      }),
+      {},
+    );
+  } catch (err) {
+    throw new Error("Categories could not be loaded");
+  }
 }

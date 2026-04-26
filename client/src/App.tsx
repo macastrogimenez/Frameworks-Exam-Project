@@ -1,27 +1,9 @@
-import React from 'react';
-import './App.css';
-
-// by @macastrogimenez TODO: This component can be deleted or modified into whatever else
-
+import "./App.css";
+import HomePage from "./pages/HomePage";
+import AllProductsPage from "./pages/AllProductsPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <HomePage />;
 }
 
 export default App;
