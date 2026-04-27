@@ -30,8 +30,8 @@ export async function getProduct(req, res) {
 export async function getCategories(req, res) {
   try {
     let categories = await productsModel.getCategories();
-    if(categories===null){
-      return res.status(404).json({error: "No categories are set"});  
+    if (categories === null) {
+      return res.status(404).json({ error: "No categories are set" });
     }
     res.json(categories);
   } catch (error) {
@@ -63,8 +63,8 @@ export async function getFilteredProducts(req, res) {
 
     if (gender) {
       const filterGender = gender.toString().toLowerCase();
-      filteredProducts = filteredProducts.filter((product) =>
-        product.gender?.toString().toLowerCase() === filterGender
+      filteredProducts = filteredProducts.filter(
+        (product) => product.gender?.toString().toLowerCase() === filterGender,
       );
     }
     // Send the filtered products as a JSON response.
