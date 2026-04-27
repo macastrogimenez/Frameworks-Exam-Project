@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 
 
-function BrandExample() {
+function NavegationBar() {
     return (
         <>
             <Navbar className="bg-body-tertiary">
@@ -30,4 +30,4 @@ function BrandExample() {
     );
 }
 
-export default BrandExample;
+export default NavegationBar;
