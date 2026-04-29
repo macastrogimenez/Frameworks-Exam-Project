@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import AllProductsPage from "./pages/AllProductsPage";
 import BasketPage from "./pages/BasketPage";
 import LoginPage from "./pages/LoginPage";
-import NavegationBar from "./components/navbar/NavigationBar";
+import NavigationBar from "./components/navbar/NavigationBar";
 import RegistrationPage from "./pages/RegistrationPage";
 
 
