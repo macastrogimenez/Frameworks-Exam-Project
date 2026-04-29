@@ -29,7 +29,7 @@ In this repository a complete version of the web-shop can be found:
 1. Install all dependencies - open command terminal on project root (only necessary the first time you run it): `make install`.
 2. Open 2 terminals at project root:
     - Start the server by running on Terminal 1: `make server`
-    - Start the client by running on Terminal 2: `make client`, then enter `y` (since both server and client will attempt to use the same port, this allows the client to use a different port)
+    - Start the client by running on Terminal 2: `make client`
 
 ### How to deploy
 

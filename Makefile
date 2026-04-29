@@ -1,5 +1,5 @@
 # Root Makefile to run server/client from the top-level project directory
-.PHONY: install-server install-client install server client build
+.PHONY: install-server install-client install-reactDependencies install server client build
 
 install-server:
 	cd server && npm install
@@ -7,7 +7,10 @@ install-server:
 install-client:
 	cd client && npm install
 
-install: install-server install-client
+install-reactDependencies:
+	cd client && npm install react-bootstrap bootstrap && npm install react-router-dom
+
+install: install-server install-client install-reactDependencies
 
 server:
 	cd server && npm start
