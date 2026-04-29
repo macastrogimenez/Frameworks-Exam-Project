@@ -4,18 +4,18 @@ import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 
 
-function NavegationBar() {
+function NavigationBar() {
     return (
         <>
             <Navbar className="bg-body-tertiary">
                 <Container fluid>
                     <Navbar.Brand as={Link} to="/">
                         <img
-                        alt=""
-                        src="/images/brandlogo.png"
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
+                            alt=""
+                            src="/images/brandlogo.png"
+                            width="30"
+                            height="30"
+                            className="d-inline-block align-top"
                         />{' '}
                         Body is Tee
                     </Navbar.Brand>
@@ -30,4 +30,4 @@ function NavegationBar() {
     );
 }
 
-export default NavegationBar;
+export default NavigationBar;
