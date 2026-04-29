@@ -1,5 +1,5 @@
 import "./ProductCard.css";
-import { ActionButton } from "../buttons/ActionButton";
+import ActionButton from "../buttons/ActionButton";
 
 type ProductCardProps = {
   id: number;
@@ -33,7 +33,7 @@ function ProductCard(props: ProductCardProps) {
           <p className="product-card-price">€ {props.price.toFixed(2)}</p>
         )}
 
-        {props.showButton ? <ActionButton label="Add to basket" /> : null}
+        {props.showButton ? <ActionButton textOnButton="Add to basket" /> : null}
       </div>
     </div>
   );

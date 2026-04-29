@@ -1,48 +1,36 @@
-import React from "react";
+import { useState } from "react";
 import "./ActionButton.css";
-import { Toast } from "../toast/Toast";
+import Toast from "../toast/Toast";
 
-//Action Button on product cards for the add to basket function 
+// Action Button on product cards for the add to basket function
 
-//Defined while rendering on page
+// Defined while rendering on page
 interface ActionButtonProps {
-    label?: string;
+    textOnButton?: string;
     toastMessage?: string;
 }
 
-interface ActionButtonState { //tracks the click of the button 
-    clicked: boolean;
+function ActionButton(props: ActionButtonProps) {
+    // Tracks the click of the action button, sets the initial state (not clicked)
+    const [clicked, setClicked] = useState(false);
+
+    const handleClick = () => {
+        setClicked(true);
+        setTimeout(() => setClicked(false), 1000); // Resets after 1 second
+    };
+
+    return (
+        <div>
+            {/* Add to basket button: */}
+            <button onClick={handleClick} className="btn-dark">
+                {/* Use props.textOnButton if it has a value, otherwise the default is "Add to basket" */}
+                {props.textOnButton || "Add to basket"}
+            </button>
+            {/* Toast message: use props.toastMessage if it has a value, otherwise the default is "Straight into your basket!" */}
+            <Toast message={props.toastMessage || "Straight into your basket!"}
+                visible={clicked} />
+        </div>
+    );
 }
 
-export class ActionButton extends React.Component<
-    ActionButtonProps,
-    ActionButtonState
-> {
-    constructor(props: ActionButtonProps) {
-        super(props);
-        this.state = { clicked: false }; //sets the initial state of the button (not clicked)
-    }
-
-    handleClick = () => {
-        this.setState({ clicked: true });
-        setTimeout(() => {
-            this.setState({ clicked: false });
-        }, 1000); //resets after 1 second
-    }
-
-    render() {
-        return (
-            <div>
-                {/* Add to basket button: */}
-                <button onClick={this.handleClick} className="btn-dark">
-                    {this.props.label || "Add to basket"}
-                </button>
-
-                {/* Customized toast message after clicking: */}
-                <Toast message={this.props.toastMessage || "Straight into your basket!"}
-                    visible={this.state.clicked}
-                />
-            </div>
-        );
-    }
-}
+export default ActionButton;
