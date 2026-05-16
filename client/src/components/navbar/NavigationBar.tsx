@@ -23,6 +23,7 @@ function NavigationBar() {
                         <Nav.Link as={Link} to="/products">All Products</Nav.Link>
                         <Nav.Link as={Link} to="/basket">Basket</Nav.Link>
                         <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                        <Nav.Link as={Link} to="/registration">Register</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

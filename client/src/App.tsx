@@ -12,7 +12,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 function App() {
   return (
     <>
-      <NavegationBar />
+      <NavigationBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<AllProductsPage />} />
