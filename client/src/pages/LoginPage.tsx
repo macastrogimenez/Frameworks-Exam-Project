@@ -1,27 +1,35 @@
 import "./pages.css";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, Form, ErrorMessage, FormikHelpers, FormikProps } from "formik";
 import * as Yup from "yup";
 import Toast from "../components/toast/Toast";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import useLogin from "../hooks/useLogin";
 
 interface loginDetails {
   email: string;
+  password: string;
 }
 
 const loginSchema = Yup.object().shape(
   {
     email: Yup.string().email("Invalid email address").required("Email is required"),
+    password: Yup.string().required("Password is required"),
   }
 );
 
 function LoginPage() {
   const navigate = useNavigate();
+  const { login, saveDetails } = useAuth();
+  const loginUser = useLogin();
 
   const [toastVisible, setToastVisible] = useState(false);
+  const [toastMessage, setToastMessage] = useState("Login successful!");
 
   const initialLoginDetails: loginDetails = {
     email: "",
+    password: "",
   };
 
   return (
@@ -30,7 +38,7 @@ function LoginPage() {
       <Toast
 
         visible={toastVisible}
-        message="Login successful!"
+        message={toastMessage}
 
       />
 
@@ -40,11 +48,21 @@ function LoginPage() {
         <Formik<loginDetails>
           initialValues={initialLoginDetails}
           validationSchema={loginSchema}
-          onSubmit={(loginValues, { setSubmitting }) => {
+          onSubmit={async (loginValues: loginDetails, { setSubmitting }: FormikHelpers<loginDetails>) => {
+            const result = await loginUser(loginValues);
+
+            if (!result.user) {
+              setToastMessage(result.error ?? "Login failed");
+              setToastVisible(true);
+              setSubmitting(false);
+              return;
+            }
 
             //saving a logged in user - store email as username
-            localStorage.setItem("registeredName", loginValues.email);
+            login(result.user.email);
+            saveDetails(result.user);
 
+            setToastMessage("Login successful!");
             setToastVisible(true);
 
             setTimeout(() => {
@@ -55,7 +73,10 @@ function LoginPage() {
           }}
         >
 
-          {({ isSubmitting }) => (
+          {(props: FormikProps<loginDetails>) => {
+            const { isSubmitting } = props;
+
+            return (
             <Form>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
@@ -74,6 +95,23 @@ function LoginPage() {
                 />
               </div>
 
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+
+                <Field
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Your password"
+                />
+
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="error"
+                />
+              </div>
+
               <button type="submit" disabled={isSubmitting}>
                 Login
               </button>
@@ -84,7 +122,7 @@ function LoginPage() {
               </p>
             </Form>
 
-          )}
+          );}}
 
         </Formik>
       </main>

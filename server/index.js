@@ -1,6 +1,7 @@
 import express from "express";
 import { productsRouter } from "./API/products/products.route.js";
 import { basketRouter } from "./API/basket/basket.route.js";
+import { usersRouter } from "./API/users/users.route.js";
 // Now express handles when someone visits /products or /products/:id
 
 const app = express();
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
 
 app.use(productsRouter);
 app.use(basketRouter);
+app.use(usersRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
