@@ -8,7 +8,6 @@ import NavigationBar from "./components/navbar/NavigationBar";
 import RegistrationPage from "./pages/RegistrationPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 
-
 function App() {
   return (
     <>
@@ -19,7 +18,7 @@ function App() {
         <Route path="/basket" element={<BasketPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
-        <Route path="/productDetail" element={<ProductDetailPage />} />
+        <Route path="/products/:id" element={<ProductDetailPage />} />
       </Routes>
     </>
   );

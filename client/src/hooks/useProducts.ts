@@ -6,9 +6,12 @@ export type Product = {
   id: number;
   image: string;
   name: string;
+  description: string;
+  color: string;
   price: number;
   discount: number;
   newArrival: boolean;
+
 };
 
 function useProducts() {

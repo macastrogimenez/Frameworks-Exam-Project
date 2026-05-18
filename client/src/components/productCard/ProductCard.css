@@ -37,7 +37,9 @@
 }
 
 
-
+.product-card-link {
+  cursor: pointer;
+}
 
 
 .product-card-button {

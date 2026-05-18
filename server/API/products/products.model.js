@@ -32,6 +32,7 @@ export async function getMostImportantInfo() {
         price: product.price,
         discount: product.discount,
         color: product.color,
+        description: product.description,
         name: product.name,
         id: product.id,
         gender: product.gender,
