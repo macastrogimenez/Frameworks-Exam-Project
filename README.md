@@ -38,7 +38,7 @@ We don’t deploy because React requires us to, we deploy so other users can acc
 
 - Before deploying:
 
-You are running a development server (`make start`).
+You are running a development server (`make server` + `make client`).
 Output is unoptimized, larger, slower, and includes dev tooling/hot reload.
 It’s meant for local coding, not production traffic.
 

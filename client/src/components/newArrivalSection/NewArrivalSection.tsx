@@ -1,9 +1,11 @@
 import ProductCard from "../productCard/ProductCard";
 import useProducts from "../../hooks/useProducts";
+import useBasket from "../../hooks/useBasket";
 import "./NewArrivalSection.css";
 
 function NewArrivalSection() {
   const products = useProducts();
+  const { addToBasket } = useBasket(products.length);
 
   const newArrivalProducts = products.filter((product) => product.newArrival); // only keep products where newArrival is true
 
@@ -20,6 +22,8 @@ function NewArrivalSection() {
             name={product.name}
             price={product.price}
             discount={product.discount}
+            showButton={true}
+            onAddToBasket={addToBasket}
           />
         ))}
       </div>

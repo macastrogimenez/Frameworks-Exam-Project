@@ -8,6 +8,7 @@ import Toast from "../toast/Toast";
 interface ActionButtonProps {
     textOnButton?: string;
     toastMessage?: string;
+    onAddToBasket?: () => void;
 }
 
 function ActionButton(props: ActionButtonProps) {
@@ -15,6 +16,9 @@ function ActionButton(props: ActionButtonProps) {
     const [clicked, setClicked] = useState(false);
 
     const handleClick = () => {
+        if (props.onAddToBasket) {
+            props.onAddToBasket();
+        }
         setClicked(true);
         setTimeout(() => setClicked(false), 1000); // Resets after 1 second
     };

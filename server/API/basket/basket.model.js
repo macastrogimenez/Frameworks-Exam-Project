@@ -44,6 +44,10 @@ export async function updateBasket(username, product) {
 
   if (!user) return null;
 
+  if (!Array.isArray(user.basket)) {
+    user.basket = [];
+  }
+
   /* 
   If the product is already in the basket, 
   increase the quantity, otherwise add the product to the basket 
@@ -58,7 +62,7 @@ export async function updateBasket(username, product) {
   }
 
   await fs.writeFile(ALL_USERS_JSON, JSON.stringify(users));
-  return user;
+  return await getBasket(username);
 }
 
 // Remove a product from a specific user's basket
@@ -84,10 +88,10 @@ export async function removeFromBasket(username, productId) {
   }
 
   await fs.writeFile(ALL_USERS_JSON, JSON.stringify(users));
-  return user;
+  return await getBasket(username);
 }
 // helper function to get basket in most basic format from JSON
-export async function getJsonBasketFromUser(username){
+export async function getJsonBasketFromUser(username) {
 
   let usersTxt = await fs.readFile(ALL_USERS_JSON); // reading users file
   let users = JSON.parse(usersTxt); // parsing data from JSON to JS
@@ -120,7 +124,7 @@ export async function getBasket(username) {
 
   // calculating total price by folding every element of the bakset
   let totalPrice = basketItems.reduce(
-    (total, [, , quantity, unitPrice, discount]) => total + quantity * unitPrice * (1-discount),
+    (total, [, , quantity, unitPrice, discount]) => total + quantity * unitPrice * (1 - discount),
     0
   );
 
@@ -128,13 +132,13 @@ export async function getBasket(username) {
   const roundedPrice = totalPrice.toFixed(2);
 
   // adding labels to every product field 
-  let labelledBasketItems = basketItems.map(([id,prodName,qty,price,disc]) => {
-    return {productId: id, productName: prodName, quantity: qty, unitPrice: price, discount: disc};
+  let labelledBasketItems = basketItems.map(([id, prodName, qty, price, disc]) => {
+    return { productId: id, productName: prodName, quantity: qty, unitPrice: price, discount: disc };
   }
 
   )
   //adding labels to every major basket field and returning
-  return {username: username, basket: labelledBasketItems, totalPrice: roundedPrice};
+  return { username: username, basket: labelledBasketItems, totalPrice: roundedPrice };
 }
 
 

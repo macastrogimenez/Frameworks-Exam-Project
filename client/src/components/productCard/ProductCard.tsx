@@ -8,6 +8,7 @@ type ProductCardProps = {
   price: number;
   discount: number;
   showButton?: boolean; // whether or not you see a "Add to Cart" button on the card
+  onAddToBasket?: (productId: number) => void;
 };
 function ProductCard(props: ProductCardProps) {
   const hasDiscount = props.discount > 0;
@@ -33,7 +34,12 @@ function ProductCard(props: ProductCardProps) {
           <p className="product-card-price">€ {props.price.toFixed(2)}</p>
         )}
 
-        {props.showButton ? <ActionButton textOnButton="Add to basket" /> : null}
+        {props.showButton ? (
+          <ActionButton
+            textOnButton="Add to basket"
+            onAddToBasket={() => props.onAddToBasket?.(props.id)}
+          />
+        ) : null}
       </div>
     </div>
   );

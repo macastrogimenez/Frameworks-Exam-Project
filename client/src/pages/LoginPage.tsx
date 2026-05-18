@@ -42,11 +42,8 @@ function LoginPage() {
           validationSchema={loginSchema}
           onSubmit={(loginValues, { setSubmitting }) => {
 
-            //saving a logged in user
-            localStorage.setItem(
-              "loggedInUser",
-              JSON.stringify({ email: loginValues.email })
-            );
+            //saving a logged in user - store email as username
+            localStorage.setItem("registeredName", loginValues.email);
 
             setToastVisible(true);
 
