@@ -21,7 +21,7 @@ function ProductDetailPage() {
 
   return (
     <main className="page-container">
-      <h1 className="page-title">{product.name}</h1>
+      <h1 className="product-detail-title">{product.name}</h1>
 
       <div className="product-detail-card">
         <img
