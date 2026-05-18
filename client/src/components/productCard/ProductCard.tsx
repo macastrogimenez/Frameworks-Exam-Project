@@ -1,5 +1,6 @@
 import "./ProductCard.css";
 import ActionButton from "../buttons/ActionButton";
+import { Link } from "react-router-dom";
 
 type ProductCardProps = {
   id: number;
@@ -16,7 +17,13 @@ function ProductCard(props: ProductCardProps) {
 
   return (
     <div className="product-card">
-      <img className="product-card-image" src={props.image} alt={props.name} />
+      <Link className="product-card-link" to={`/products/${props.id}`}>
+        <img
+          className="product-card-image"
+          src={props.image}
+          alt={props.name}
+        />
+      </Link>
       <div className="product-card-content">
         <h2 className="product-card-title">{props.name}</h2>
 

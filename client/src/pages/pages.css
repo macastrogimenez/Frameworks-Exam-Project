@@ -17,11 +17,34 @@
 
 .all-products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* 3 product cards per row*/
   gap: 24px;
   width: 100%;
   margin-top: 20px;
 }
+
+/* Detailed Product Page View*/
+.product-detail-card {
+  width: 100%;
+  border: 1px solid #ddd;
+  background-color: white;
+  padding: 24px;
+}
+
+.product-detail-image {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 550px;
+  height: 500px;
+}
+
+.product-detail-content {
+  width: 100%;
+  margin-top: 24px;
+}
+
+
 
 form {
   display: flex;
