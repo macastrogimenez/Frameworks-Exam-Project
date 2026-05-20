@@ -18,13 +18,17 @@ function NavigationBar() {
                 height="100"
                 className="d-inline-block align-center"
             />{" "}
-            </Navbar.Brand>
+                        </Navbar.Brand>
 
-            <Navbar.Toggle aria-controls="main-navbar" />
+                        {/* Greet the logged-in user immediately to the right of the logo */}
+                        {isLoggedIn && (
+                            <span className="navbar-text ms-2 d-none d-lg-inline">Hi again, {user?.firstName}.</span>
+                        )}
 
-            <Navbar.Collapse id="main-navbar">
-            <Nav className="ms-auto align-items-lg-center gap-3">
-                {isLoggedIn && <span className="navbar-text">Hi again, {user?.firstName}.</span>}
+                        <Navbar.Toggle aria-controls="main-navbar" />
+
+                        <Navbar.Collapse id="main-navbar">
+                        <Nav className="ms-auto align-items-lg-center gap-3">
 
                 <Nav.Link as={Link} to="/">Home</Nav.Link>
                 <Nav.Link as={Link} to="/products">All Products</Nav.Link>
