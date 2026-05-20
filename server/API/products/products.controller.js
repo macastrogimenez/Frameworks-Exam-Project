@@ -51,20 +51,29 @@ export async function getMostImportantInfo(req, res) {
 export async function getFilteredProducts(req, res) {
   try {
     let filteredProducts = await productsModel.getMostImportantInfo();
-    const { color, gender } = req.query;
+
+    const toStringArray = (value) => {
+      if (!value) return [];
+      return Array.isArray(value) ? value : [value];
+    };
+
+    const colors = toStringArray(req.query.color).map((value) =>
+      value.toString().toLowerCase(),
+    );
+    const genders = toStringArray(req.query.gender).map((value) =>
+      value.toString().toLowerCase(),
+    );
 
     // Filter products based on query parameters if they are provided.
-    if (color) {
-      const filterColor = color.toString().toLowerCase();
-      filteredProducts = filteredProducts.filter((product) => {
-        return product.color?.toString().toLowerCase() === filterColor;
-      });
+    if (colors.length > 0) {
+      filteredProducts = filteredProducts.filter((product) =>
+        colors.includes(product.color?.toString().toLowerCase()),
+      );
     }
 
-    if (gender) {
-      const filterGender = gender.toString().toLowerCase();
-      filteredProducts = filteredProducts.filter(
-        (product) => product.gender?.toString().toLowerCase() === filterGender,
+    if (genders.length > 0) {
+      filteredProducts = filteredProducts.filter((product) =>
+        genders.includes(product.gender?.toString().toLowerCase()),
       );
     }
     // Send the filtered products as a JSON response.
