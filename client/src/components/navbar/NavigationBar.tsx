@@ -14,11 +14,10 @@ function NavigationBar() {
             <img
                 alt=""
                 src="/images/brandlogo.png"
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
+                width="100"
+                height="100"
+                className="d-inline-block align-center"
             />{" "}
-            Body is Tee
             </Navbar.Brand>
 
             <Navbar.Toggle aria-controls="main-navbar" />
