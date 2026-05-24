@@ -35,6 +35,13 @@
   }
 }
 
+/* Responsive form pages (login & registration): */
+@media (max-width: 600px) {
+  form {
+    max-width: 100%;
+  }
+}
+
 /* Detailed Product Page View*/
 .product-detail-card {
   width: 100%;
