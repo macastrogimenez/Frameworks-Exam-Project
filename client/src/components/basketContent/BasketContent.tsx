@@ -11,12 +11,12 @@ type BasketContentProps = {
 function BasketContent(props: BasketContentProps) {
 
     return (
-        <div style={{ overflowX: "auto" }}>
+        <div className="basket-table-wrapper">
             <table className="table">
                 <thead className="table-light">
                     <tr>
                         <th scope="col">Product Id</th>
-                        <th scope="col">Product Name</th>
+                        <th className="basket-product-name" scope="col">Product Name</th>
                         <th scope="col">Price Per Unit</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Total Price</th>
@@ -34,7 +34,7 @@ function BasketContent(props: BasketContentProps) {
                         return (
                             <tr key={`basket-item-${product.id}`}>
                                 <td>#{product.id}</td>
-                                <td>{product.name}</td>
+                                <td className="basket-product-name">{product.name}</td>
                                 <td>{price}</td>
                                 <td>{quantity}</td>
                                 <td>€ {itemTotal}</td>

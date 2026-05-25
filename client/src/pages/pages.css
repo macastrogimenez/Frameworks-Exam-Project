@@ -1,3 +1,4 @@
+/* Shared Page Layout */
 .page-title {
   text-align: center;
   font-size: 28px;
@@ -9,12 +10,15 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 24px;
+  width: 100%;
+  box-sizing: border-box;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* All Products Page View */
 .all-products-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -23,31 +27,13 @@
   margin-top: 20px;
 }
 
-@media (max-width: 991.98px) {
-  .all-products-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 767.98px) {
-  .all-products-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Responsive form pages (login & registration): */
-@media (max-width: 600px) {
-  form {
-    max-width: 100%;
-  }
-}
-
-/* Detailed Product Page View*/
+/* Detailed Product Page View */
 .product-detail-card {
   width: 100%;
   border: 1px solid #ddd;
   background-color: white;
   padding: 24px;
+  box-sizing: border-box;
 }
 
 .product-detail-title {
@@ -64,6 +50,7 @@
   width: 100%;
   max-width: 550px;
   height: 500px;
+  object-fit: contain;
 }
 
 .product-detail-content {
@@ -72,8 +59,7 @@
   font-size: 17px;
 }
 
-
-
+/* Login And Registration Page View */
 form {
   display: flex;
   flex-direction: column;
@@ -131,4 +117,113 @@ button:disabled {
 .error {
   color: red;
   font-size: 12px;
+}
+
+/* Basket Page View */
+.basketTitle {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.basket-table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.page-container .table {
+  width: 100%;
+  min-width: 780px;
+}
+
+.page-container .table th,
+.page-container .table td {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.basket-product-name {
+  min-width: 220px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.basket-summary {
+  width: 100%;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.basket-summary-total {
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+/* Adding Responsiveness */
+@media (max-width: 991.98px) {
+  .all-products-grid,
+  .page-container .section-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767.98px) {
+  .all-products-grid,
+  .page-container .section-product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-container {
+    padding: 16px;
+  }
+
+  .product-detail-title {
+    font-size: 34px;
+    margin-bottom: 24px;
+  }
+
+  .product-detail-card {
+    padding: 16px;
+  }
+
+  .product-detail-image {
+    height: 360px;
+  }
+
+  .product-detail-content {
+    font-size: 16px;
+  }
+
+  .basketTitle {
+    font-size: 24px;
+  }
+
+  .basket-summary .d-grid {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  form {
+    max-width: 100%;
+  }
+
+  .page-container .table {
+    min-width: 640px;
+    font-size: 14px;
+  }
+
+  .page-container .table th,
+  .page-container .table td {
+    padding: 8px;
+  }
+
+  .basket-product-name {
+    min-width: 180px;
+  }
+
+  .basket-summary-total {
+    font-size: 18px;
+  }
 }
