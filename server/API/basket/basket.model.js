@@ -14,6 +14,27 @@ export async function getAllUsers() {
   }
 }
 
+// Auto-create guest user if they don't exist
+export async function getOrCreateUser(username) {
+  let users = await getAllUsers();
+  let user = users.find((u) => u.username === username);
+
+  // If user doesn't exist and it's a guest ID, create guest user
+  if (!user && username.startsWith("guest_")) {
+    user = {
+      fname: "Guest",
+      lname: "User",
+      username: username,
+      password: null,
+      basket: []
+    };
+    users.push(user);
+    await fs.writeFile(ALL_USERS_JSON, JSON.stringify(users));
+  }
+
+  return user || null;
+}
+
 // Create a basket for a use if they dont have one. Based on username.
 export async function createBasketForUser(username, basket) {
   try {
@@ -40,7 +61,7 @@ export async function createBasketForUser(username, basket) {
 //Put a product to a specific user's basket
 export async function updateBasket(username, product) {
   let users = await getAllUsers();
-  let user = users.find((u) => u.username === username);
+  let user = await getOrCreateUser(username);
 
   if (!user) return null;
 
@@ -61,6 +82,13 @@ export async function updateBasket(username, product) {
     user.basket.push(product);
   }
 
+  // Update users array with modified user
+  users = await getAllUsers();
+  let userIndex = users.findIndex((u) => u.username === username);
+  if (userIndex !== -1) {
+    users[userIndex] = user;
+  }
+
   await fs.writeFile(ALL_USERS_JSON, JSON.stringify(users));
   return await getBasket(username);
 }
@@ -68,7 +96,7 @@ export async function updateBasket(username, product) {
 // Remove a product from a specific user's basket
 export async function removeFromBasket(username, productId) {
   let users = await getAllUsers();
-  let user = users.find((u) => u.username === username);
+  let user = await getOrCreateUser(username);
 
   if (!user) return null;
 
@@ -87,15 +115,24 @@ export async function removeFromBasket(username, productId) {
     user.basket.splice(productIndex, 1);
   }
 
+  // Update users array with modified user
+  users = await getAllUsers();
+  let userIndex = users.findIndex((u) => u.username === username);
+  if (userIndex !== -1) {
+    users[userIndex] = user;
+  }
+
   await fs.writeFile(ALL_USERS_JSON, JSON.stringify(users));
   return await getBasket(username);
 }
 // helper function to get basket in most basic format from JSON
 export async function getJsonBasketFromUser(username) {
+  // Ensure guest user exists
+  let user = await getOrCreateUser(username);
+  if (!user) {
+    return false;
+  }
 
-  let usersTxt = await fs.readFile(ALL_USERS_JSON); // reading users file
-  let users = JSON.parse(usersTxt); // parsing data from JSON to JS
-  let user = users.find(person => person.username === username); // find user by username
   return user?.basket ?? false;
 }
 
@@ -106,6 +143,11 @@ export async function getBasket(username) {
   // if the user does not exist return null for error handling on controller
   if (userBasket === false) {
     return null;
+  }
+
+  // Ensure userBasket is always an array and handle empty basket
+  if (!Array.isArray(userBasket) || userBasket.length === 0) {
+    return { username: username, basket: [], totalPrice: "0.00" };
   }
 
   // getting most important info about all products
@@ -134,11 +176,30 @@ export async function getBasket(username) {
   // adding labels to every product field 
   let labelledBasketItems = basketItems.map(([id, prodName, qty, price, disc]) => {
     return { productId: id, productName: prodName, quantity: qty, unitPrice: price, discount: disc };
-  }
+  });
 
-  )
   //adding labels to every major basket field and returning
   return { username: username, basket: labelledBasketItems, totalPrice: roundedPrice };
+}
+
+// Remove all products from a specific user's basket
+export async function placeOrder(username) {
+  let users = await getAllUsers();
+  let user = await getOrCreateUser(username);
+
+  if (!user) return null;
+
+  user.basket = []; // Clear the basket
+
+  // Update users array with modified user
+  users = await getAllUsers();
+  let userIndex = users.findIndex((u) => u.username === username);
+  if (userIndex !== -1) {
+    users[userIndex] = user;
+  }
+
+  await fs.writeFile(ALL_USERS_JSON, JSON.stringify(users));
+  return await getBasket(username);
 }
 
 

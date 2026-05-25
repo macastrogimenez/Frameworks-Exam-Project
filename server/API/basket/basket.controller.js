@@ -87,7 +87,7 @@ export async function getBasket(req, res) {
 
     let basket = await basketModel.getBasket(username);
 
-    if (basket === null){
+    if (basket === null) {
       return res.status(404).json({ error: "username not found" });
     }
 
@@ -97,6 +97,27 @@ export async function getBasket(req, res) {
 
     res.json(basket);
   } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
+
+export async function placeOrder(req, res) {
+  try {
+    let username = req.params.username;
+
+    // Clear the basket by calling the placeOrder function
+    let basket = await basketModel.placeOrder(username);
+
+    if (basket === null) {
+      return res.status(404).json({ error: "username not found" });
+    }
+
+    if (!basket) {
+      return res.status(404).json({ error: "Basket not found" });
+    }
+    res.json({ message: "Order placed successfully", basket: basket });
+  }
+  catch (error) {
     res.status(400).send(error.message);
   }
 }
