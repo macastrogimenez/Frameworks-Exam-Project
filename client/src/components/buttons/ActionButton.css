@@ -4,4 +4,52 @@
     color: #fff;
     padding: 10px 24px;
     border: 1px solid #000;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    min-width: 80px;
+}
+
+.btn-dark:hover {
+    background-color: #333;
+}
+
+/* Responsive button styling for tablets */
+@media (max-width: 767.98px) {
+    .btn-dark {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+}
+
+/* Responsive button styling for mobile devices */
+@media (max-width: 480px) {
+    .btn-dark {
+        padding: 10px 20px;
+        font-size: 12px;
+        width: 100%;
+    }
+
+    /* Don't apply full width to small buttons in table groups */
+    .table-button-group .btn-dark {
+        width: auto;
+        min-width: auto;
+    }
+}
+
+/* Button container for proper spacing */
+.btn-container {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+@media (max-width: 480px) {
+    .btn-container {
+        flex-direction: column;
+    }
+
+    .btn-container .btn-dark {
+        width: 100%;
+    }
 }

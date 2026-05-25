@@ -69,3 +69,7 @@ GET http://localhost:3000/user/wrong.name/basket HTTP/1.1
 // Returns an empty basket [] since the user has no items on it
 GET http://localhost:3000/user/ethan.diaz/basket HTTP/1.1
 
+###
+// Returns an empty basket since the basket is cleared for the user
+DELETE http://localhost:3001/user/mia.anderson/basket HTTP/1.1
+

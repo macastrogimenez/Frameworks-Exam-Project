@@ -15,6 +15,67 @@
   align-items: center;
 }
 
+/* Responsive padding for tablets */
+@media (max-width: 767.98px) {
+  .page-container {
+    padding: 16px;
+  }
+}
+
+/* Responsive padding for mobile */
+@media (max-width: 480px) {
+  .page-container {
+    padding: 12px;
+  }
+}
+
+/* Basket page responsive styling */
+.basketTitle {
+  width: 100%;
+}
+
+@media (max-width: 767.98px) {
+  .basketTitle {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .basketTitle {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+}
+
+/* Responsive table styling */
+.table {
+  width: 100%;
+  font-size: 14px;
+}
+
+@media (max-width: 767.98px) {
+  .table {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table {
+    font-size: 11px;
+  }
+
+  .table th,
+  .table td {
+    padding: 6px 2px;
+  }
+}
+
 .all-products-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

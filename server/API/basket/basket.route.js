@@ -1,5 +1,5 @@
 import express from "express";
-import { createBasket, getBasket, updateBasket, removeFromBasket } from "./basket.controller.js";
+import { createBasket, getBasket, updateBasket, removeFromBasket, placeOrder } from "./basket.controller.js";
 export const basketRouter = express.Router();
 // The controller handles request/response logic.
 //The model reads data from products.json.
@@ -17,3 +17,6 @@ basketRouter.put(("/user/:username/basket"), updateBasket);
 
 // DELETE: Remove a product from a specific user's basket
 basketRouter.delete("/user/:username/basket/:productId", removeFromBasket);
+
+//DELETE: Remove all products from a specific user's basket
+basketRouter.delete("/user/:username/basket", placeOrder);
