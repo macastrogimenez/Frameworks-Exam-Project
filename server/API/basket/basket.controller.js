@@ -80,11 +80,6 @@ export async function getBasket(req, res) {
       return res.status(400).json({ error: "username query parameter is required" });
     }
 
-    //let userBasket = await basketModel.getJsonBasketFromUser(username);
-    // if (userBasket === false) {
-    //   return res.status(400).json({ error: "username does not match any existing record" });
-    // }
-
     let basket = await basketModel.getBasket(username);
 
     if (basket === null) {
@@ -101,6 +96,7 @@ export async function getBasket(req, res) {
   }
 }
 
+// Clear the basket and place an order for a specific user
 export async function placeOrder(req, res) {
   try {
     let username = req.params.username;

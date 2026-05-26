@@ -2,12 +2,12 @@ import "./ActionButton.css";
 
 interface PlaceOrderButtonProps {
     textOnButton?: string;
-    onPlaceOrder?: () => void;
+    onPlaceOrder?: () => void; //Optional prop (?) that allows parent components to pass a callback function.
 }
 
 function PlaceOrderButton(props: PlaceOrderButtonProps) {
     const handleClick = () => {
-        if (props.onPlaceOrder) {
+        if (props.onPlaceOrder) { // Check if callback function exits before calling it
             props.onPlaceOrder();
         }
     };

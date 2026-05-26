@@ -21,15 +21,15 @@ export type BasketResponse = {
 function useBasket(productCount: number) {
     const [basketData, setBasketData] = useState<BasketResponse | null>(null);
     const [registeredName, setRegisteredName] = useState<string | null>(null);
-    const { user } = useAuth();
+    const { user } = useAuth(); // For handling authenticated users and guests.
 
     // Convert basket items to sparse array format for backward compatibility
     function basketItemsToArray(items: BasketItemDetail[] | undefined | null): number[] {
-        const basketarray = new Array(productCount).fill(0);
-        if (!Array.isArray(items)) {
+        const basketarray = new Array(productCount).fill(0); // Fill array with zeros based on product count
+        if (!Array.isArray(items)) { // Guard clause for missing or invalid items data
             items = [];
         }
-        items.forEach((item) => {
+        items.forEach((item) => { // Loop over each item and populate the corresponding index with quantity.
             basketarray[item.productId] = item.quantity;
         });
         return basketarray;
@@ -39,39 +39,39 @@ function useBasket(productCount: number) {
     function getOrCreateGuestId(): string {
         let guestId = localStorage.getItem("guestId");
         if (!guestId) {
-            guestId = "guest_" + Math.random().toString(36).substr(2, 9);
+            guestId = "guest_" + Math.random().toString(36).substr(2, 9); // Math.random() generate decimal number. toString convert to base 36 (letters + numbers), substr extract substring for shorter ID.
             localStorage.setItem("guestId", guestId);
         }
         return guestId;
     }
 
-    // Load basket from API on mount and when user authentication changes
+    // Load basket from API
     useEffect(() => {
         // Use authenticated user email or generate a guest ID
         const userId = user?.email || getOrCreateGuestId();
         setRegisteredName(userId);
 
-        fetch(`http://localhost:3001/user/${userId}/basket`)
-            .then((response) => response.json())
-            .then((data: BasketResponse) => setBasketData(data))
+        fetch(`http://localhost:3001/user/${userId}/basket`) //HTTP GET request. Asynchronous operation.
+            .then((response) => response.json()) // convert to json
+            .then((data: BasketResponse) => setBasketData(data))  //updates basketData state with the fetched data.
             .catch((error) => {
                 console.error("Failed to load basket:", error);
-                setBasketData(null);
+                setBasketData(null); // Error handling.
             });
-    }, [user]);
+    }, [user]); // Dependency array. Syncs basket with user changes.
 
 
     // Add a product to basket
     const addToBasket = (productId: number, quantity: number = 1): void => {
-        if (!registeredName) return;
+        if (!registeredName) return; // Guard clause.
 
 
-        fetch(`http://localhost:3001/user/${registeredName}/basket`, {
+        fetch(`http://localhost:3001/user/${registeredName}/basket`, { //HTTP PUT Method.
             method: "PUT",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json", // sending json data
             },
-            body: JSON.stringify({ product: [productId, quantity] }),
+            body: JSON.stringify({ product: [productId, quantity] }), // match with backend's format
         })
             .then((response) => response.json())
             .then((data: BasketResponse) => setBasketData(data))
@@ -82,7 +82,7 @@ function useBasket(productCount: number) {
     const removeFromBasket = (productId: number): void => {
         if (!registeredName) return;
 
-        fetch(`http://localhost:3001/user/${registeredName}/basket/${productId}`, {
+        fetch(`http://localhost:3001/user/${registeredName}/basket/${productId}`, { //HTTP DELETE Method.
             method: "DELETE",
         })
             .then((response) => response.json())
@@ -91,24 +91,24 @@ function useBasket(productCount: number) {
     };
 
 
-    // Place order and clear basket, returns a promise for UI feedback
-    const placeOrder = async (): Promise<boolean> => {
+    // Place order and clear basket, returns a promise for UI feedback. Asynchronous operation.
+    const placeOrder = async (): Promise<boolean> => { //order success or order failed
         if (!registeredName) return false;
-        try {
+        try { //try block
             const response = await fetch(`http://localhost:3001/user/${registeredName}/basket`, {
                 method: "DELETE",
-            });
-            if (!response.ok) throw new Error("Order failed");
-            const data: BasketResponse = await response.json();
+            }); // HTTP DELETE method
+            if (!response.ok) throw new Error("Order failed"); // jump to catch block if response is not ok
+            const data: BasketResponse = await response.json(); // parse server repsonse as basketresponse object (should be empty)
             setBasketData(data);
             return true;
         } catch (error) {
             console.error("Error placing order:", error);
-            return false;
+            return false; // error handling used in BasketPage to show toast message.
         }
     };
 
-    return {
+    return { // The hook returns an object with the following properties for the parent components to use:
         basket: basketItemsToArray(basketData?.basket || []),
         registeredName,
         addToBasket,

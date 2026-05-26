@@ -29,11 +29,10 @@ function BasketContent(props: BasketContentProps) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.basket.map((quantity, index) => {
-                        if (quantity === 0 || !props.products[index]) return null;
-
+                    {props.basket.map((quantity, index) => { // Map over basket array to render each product row
+                        if (quantity === 0 || !props.products[index]) return null; //Guard clause against missing product data (Logical OR)
                         const product = props.products[index];
-                        const price = product.price; // make sure api returns discounted pri
+                        const price = product.price;
                         const itemTotal = (quantity * price).toFixed(2);
 
                         return (
@@ -47,14 +46,14 @@ function BasketContent(props: BasketContentProps) {
                                     <div className="table-button-group">
                                         <button
                                             className="btn btn-dark"
-                                            onClick={() => props.onRemoveItem(index)}
+                                            onClick={() => props.onRemoveItem(index)} //Event handler to decrease quantity (Arrow Function)
                                         >
                                             -
                                         </button>
 
                                         <button
                                             className="btn btn-dark"
-                                            onClick={() => props.onAddItem(index)}
+                                            onClick={() => props.onAddItem(index)} //Event handler to increase quantity (Arrow Function)
                                         >
                                             +
                                         </button>
@@ -67,7 +66,7 @@ function BasketContent(props: BasketContentProps) {
             </table>
             <div className="basket-price">
                 <div className="basket-price-total">
-                    <b>{"Total price: " + (props.totalPrice || "Error calculating total")}</b>
+                    <b>{"Total price: " + (props.totalPrice || "Error calculating total")}</b> {/* Logical OR */}
                     <PlaceOrderButton
                         textOnButton="Place your order"
                         onPlaceOrder={props.onPlaceOrder}
