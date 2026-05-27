@@ -31,9 +31,6 @@ In this repository a complete version of the web-shop can be found:
     - Start the server by running on Terminal 1: `make server`
     - Start the client by running on Terminal 2: `make client`
 
-#### In Windows
-
-
 ### How to deploy
 
 Before submitting the project we need to create a build - or deploy.
