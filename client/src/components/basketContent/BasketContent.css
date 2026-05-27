@@ -2,7 +2,7 @@
 .table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #fff;
+    background-color: white;
 }
 
 .table-light {
@@ -12,7 +12,6 @@
 .table th {
     padding: 12px;
     text-align: left;
-    font-family: sans-serif;
     font-weight: 600;
     border-bottom: 2px solid #dee2e6;
 }
@@ -47,7 +46,6 @@
 
 .basket-price-total {
     text-align: right;
-    font-family: sans-serif;
     font-size: 1.2em;
     margin-right: 20px;
 }
@@ -58,6 +56,40 @@
     .table th,
     .table td {
         padding: 10px;
+        font-size: 13px;
+    }
+
+    .table th:nth-child(1),
+    .table td:nth-child(1) {
+        min-width: 70px;
+    }
+
+    .table th:nth-child(2),
+    .table td:nth-child(2) {
+        min-width: 120px;
+    }
+
+    .basket-price {
+        gap: 15px;
+    }
+
+    .basket-price-total {
+        font-size: 1.1em;
+        margin-right: 10px;
+    }
+}
+
+/* Responsive styling for mobile devices */
+@media (max-width: 767.98px) {
+
+    .table th,
+    .table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .table {
+        font-size: 11px;
     }
 
     .table th:nth-child(1),
@@ -99,6 +131,7 @@
     }
 }
 
+
 /* Extra small mobile devices */
 @media (max-width: 480px) {
 
@@ -110,5 +143,45 @@
 
     .table {
         font-size: 9px;
+    }
+
+    .table th:nth-child(1),
+    .table td:nth-child(1) {
+        min-width: 50px;
+    }
+
+    .table th:nth-child(2),
+    .table td:nth-child(2) {
+        min-width: 80px;
+    }
+
+    .table-button-group {
+        gap: 4px;
+    }
+
+    .table .btn {
+        padding: 3px 6px;
+        font-size: 9px;
+    }
+
+    .basket-price {
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .basket-price-total {
+        font-size: 0.95em;
+    }
+}
+
+/* Horizontal scroll container */
+div[style*="overflowX"] {
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+}
+
+@media (max-width: 767.98px) {
+    div[style*="overflowX"] {
+        margin: 0 -10px;
     }
 }
