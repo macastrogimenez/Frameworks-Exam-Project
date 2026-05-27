@@ -19,7 +19,7 @@ GET http://localhost:3001/products?gender=Men HTTP/1.1
 
 ###
 // Returns products filtered matching both gender and color, accepts several filtering values at the same time
-GET http://localhost:3001/products?gender=Men&color=Blue&color=Red&gender=Women HTTP/1.1
+GET http://localhost:3001/products?gender=Men&color=Blue&color=Red HTTP/1.1
 
 ###
 // Returns only products filtered matching both gender Men and color Blue
