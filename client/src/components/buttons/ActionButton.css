@@ -10,8 +10,10 @@
     min-width: 80px;
 }
 
+
 .btn-dark:hover {
-    background-color: #333;
+    background-color: #00bec4;
+    border-color: #00bec4;
 }
 
 /* Responsive button styling for tablets */
