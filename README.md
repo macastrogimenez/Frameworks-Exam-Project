@@ -26,25 +26,15 @@ In this repository a complete version of the web-shop can be found:
 
 ### How to run project
 
+#### Mac
+0. Make sure Node.js is installed in your Mac - [Node.js](https://nodejs.org/en/download)
 1. Install all dependencies - open command terminal on project root (only necessary the first time you run it): `make install`.
 2. Open 2 terminals at project root:
     - Start the server by running on Terminal 1: `make server`
     - Start the client by running on Terminal 2: `make client`
-
-### How to deploy
-
-Before submitting the project we need to create a build - or deploy.
-We don’t deploy because React requires us to, we deploy so other users can access our app reliably.
-
-- Before deploying:
-
-You are running a development server (`make server` + `make client`).
-Output is unoptimized, larger, slower, and includes dev tooling/hot reload.
-It’s meant for local coding, not production traffic.
-
-- After npm run build:
-
-You get a production bundle in build/.
-Files are minified, optimized, and hashed for caching.
-Better performance, smaller payloads, no dev-only overhead.
-This is what you upload/deploy to hosting. So: `make client` = develop locally, `make build` = prepare app for deployment.
+  
+#### Windows
+0. Make sure Node.js is installed in your Pc - [Node.js](https://nodejs.org/en/download)
+1. Install all dependencies - open command terminal (not PowerShell) on project root (only necessary the first time you run it) and run the following command: `cd client && npm install && cd ..\server && npm install`.
+2. Open a command terminal at the project root and start the server by running: `cd server && npm start`
+3. Open a second command terminal at the project root and start the client by running: `cd client && npm start`
