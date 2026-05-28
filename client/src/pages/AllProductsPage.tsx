@@ -2,7 +2,7 @@ import ProductCard from "../components/productCard/ProductCard";
 import useProducts from "../hooks/useProducts";
 import useBasket from "../hooks/useBasket";
 import "./pages.css";
-import Filter from "../components/filtering/Filter"
+import Filter from "../components/filtering/Filter";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -27,11 +27,15 @@ function AllProductsPage() {
   // - `category`: the filter key (e.g. "color")
   // - `value`: the specific filter value (e.g. "Blue")
   // - `checked`: true when selected, false when deselected
-  const handleToggleFilter = (category: string, value: string, checked: boolean) => {
+  const handleToggleFilter = (
+    category: string,
+    value: string,
+    checked: boolean,
+  ) => {
     setSelectedFilters((currentFilters) => {
       const currentValues = currentFilters[category] ?? [];
       const nextValues = checked
-        ? [...currentValues, value]
+        ? [...currentValues, value] // Spread operator
         : currentValues.filter((existingValue) => existingValue !== value);
 
       const nextFilters = {

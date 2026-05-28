@@ -9,7 +9,7 @@ function ProductDetailPage() {
   const productId = Number(params.id);
 
   const products = useProducts();
-  const product = products.find((product) => product.id === productId);
+  const product = products.find((product) => product.id === productId); // arrow function
   const { addToBasket } = useBasket(products.length);
 
   if (!product) {
