@@ -1,12 +1,22 @@
 .product-card {
-  border: 1px solid #ddd;
+  border: 1px solid #67ccbd;
   background-color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
 }
 
 .product-card-image {
   width: 100%;
-  height: 300px;
+  height: 280px;
   object-fit: contain;
+  background-color: #f8f9fa;
+  padding: 20px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .product-card-content {
@@ -21,7 +31,7 @@
 /* normal dark text */
 .product-card-price {
   color: #222;
-  font-weight: 600; 
+  font-weight: 600;
 }
 
 /* normal dark text but crossed out */
@@ -32,7 +42,7 @@
 
 /* green and bold text */
 .product-card-discount-price {
-  color: green;
+  color: #2fa08f;
   font-weight: 700;
 }
 

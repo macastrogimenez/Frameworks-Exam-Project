@@ -16,8 +16,10 @@ interface RegistrationDetails {
 
 // Yup validation schema: all fields are required and email must be in a valid format
 const registrationSchema = Yup.object().shape({
-    firstName: Yup.string().required("First name is required"),
-    lastName: Yup.string().required("Last name is required"),
+    firstName: Yup.string().matches(/^[A-Za-z ]*$/, 'Please enter valid name')
+        .max(40).required("First name is required"),
+    lastName: Yup.string().matches(/^[A-Za-z ]*$/, 'Please enter valid name')
+        .max(40).required("Last name is required"),
     email: Yup.string().email("Invalid email address").required("Email is required"),
     password: Yup.string().required("Password is required")
 });
