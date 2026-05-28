@@ -32,14 +32,18 @@ function BasketContent(props: BasketContentProps) {
                     {props.basket.map((quantity, index) => { // Map over basket array to render each product row
                         if (quantity === 0 || !props.products[index]) return null; //Guard clause against missing product data (Logical OR)
                         const product = props.products[index];
-                        const price = product.price;
+                        // if the discount for this product is 0 show original price, else show discounted price
+                        const price =
+                            product.discount === 0
+                                ? product.price
+                                : product.price - product.price * product.discount;
                         const itemTotal = (quantity * price).toFixed(2);
 
                         return (
                             <tr key={`basket-item-${product.id}`}>
                                 <td>#{product.id}</td>
                                 <td>{product.name}</td>
-                                <td>{price}</td>
+                                <td>{price.toFixed(2)}</td>
                                 <td>{quantity}</td>
                                 <td>€ {itemTotal}</td>
                                 <td>
@@ -66,7 +70,7 @@ function BasketContent(props: BasketContentProps) {
             </table>
             <div className="basket-price">
                 <div className="basket-price-total">
-                    <b>{"Total price: " + (props.totalPrice || "Error calculating total")}</b> {/* Logical OR */}
+                    <b>{"Total basket: " + ("€ " + props.totalPrice || "Error calculating total")}</b> {/* Logical OR */}
                     <PlaceOrderButton
                         textOnButton="Place your order"
                         onPlaceOrder={props.onPlaceOrder}
