@@ -35,27 +35,6 @@ export async function getOrCreateUser(username) {
   return user || null;
 }
 
-// Create a basket for a use if they dont have one. Based on username.
-export async function createBasketForUser(username, basket) {
-  try {
-    let users = await getAllUsers();
-    let user = users.find((u) => u.username === username);
-
-    if (!user) return null;
-
-    // Check if the user already has a basket.
-    if (Array.isArray(user.basket) && user.basket.length > 0) {
-      return "already_exists";
-    }
-    user.basket = basket;
-
-    // Update the users.json file with the new basket information.
-    await fs.writeFile(ALL_USERS_JSON, JSON.stringify(users));
-    return user;
-  } catch (err) {
-    throw new Error("Could not create basket");
-  }
-}
 
 
 //Put a product to a specific user's basket
