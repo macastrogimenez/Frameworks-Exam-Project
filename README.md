@@ -4,7 +4,7 @@ In this project we developed a web-shop in which we sell different types of t-sh
 This web showcases the basic implementation of a basket and its operations, product catalogue overview, filtering, authentication, validation, as well as responsive design.
 
 ## Report
-[Click here](https://github.com/macastrogimenez/ShortestPaths-ContractionHierarchies/blob/main/Report.pdf)
+[Click here](https://github.com/macastrogimenez/SPA-Webshop/blob/develop/Report.pdf)
 
 ## Resources
 
