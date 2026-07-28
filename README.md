@@ -3,6 +3,9 @@
 In this project we developed a web-shop in which we sell different types of t-shirts. We have implemented a single page application (SPA) using React and Typescript which connects to a lightweight back-end developed using JS and Node.js through a REST API with Express.
 This web showcases the basic implementation of a basket and its operations, product catalogue overview, filtering, authentication, validation, as well as responsive design.
 
+## Report
+[Click here](https://github.com/macastrogimenez/ShortestPaths-ContractionHierarchies/blob/main/Report.pdf)
+
 ## Resources
 
 [Jira](https://itu-frameworks.atlassian.net/jira/software/projects/KAN/boards/1 "Kanban for project management")
